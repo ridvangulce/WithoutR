@@ -64,7 +64,12 @@ public class PrometeoEditor : Editor
     private SerializedProperty useSounds;
     private SerializedProperty carEngineSound;
     private SerializedProperty tireScreechSound;
-    private SerializedProperty brakeButton;
+     //
+    //
+    //BUTTON VARIABLES
+    //
+    //
+   
 
 
     private void OnEnable()
@@ -103,7 +108,7 @@ public class PrometeoEditor : Editor
         useSounds = SO.FindProperty("useSounds");
         carEngineSound = SO.FindProperty("carEngineSound");
         tireScreechSound = SO.FindProperty("tireScreechSound");
-        brakeButton = SO.FindProperty("brakeButton");
+        
 
     }
 
@@ -152,7 +157,13 @@ public class PrometeoEditor : Editor
 
         EditorGUILayout.PropertyField(rearRightMesh, new GUIContent("Rear Right Mesh: "));
         EditorGUILayout.PropertyField(rearRightCollider, new GUIContent("Rear Right Collider: "));
-        EditorGUILayout.PropertyField(brakeButton, new GUIContent("Brake Buttton: "));
+
+        //
+        //
+        //BUTTONS
+        //
+        //
+        
 
 
         //
