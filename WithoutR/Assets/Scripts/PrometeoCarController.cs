@@ -19,7 +19,7 @@ public class PrometeoCarController : MonoBehaviour
     private ButtonController buttonController;
 
     //CAR SETUP
-    bool isGo;
+
 
     [Space(20)]
     //[Header("CAR SETUP")]
@@ -300,41 +300,7 @@ public class PrometeoCarController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        //CAR DATA
 
-        // We determine the speed of the car.
-
-        carSpeed =
-            (
-                2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60
-            ) /
-            1000;
-
-        // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
-        localVelocityX =
-            transform.InverseTransformDirection(carRigidbody.velocity).x;
-
-        // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
-        localVelocityZ =
-            transform.InverseTransformDirection(carRigidbody.velocity).z;
-
-        //CAR PHYSICS
-        /*
-        The following methods are called whenever a certain key is pressed. For example, in the first 'if' we call the
-        method GoForward() if the user has pressed W.
-
-        In this part of the code we specify what the car needs to do if the user presses W (throttle), S (reverse),
-        A (turn left), D (turn right) or Space bar (handbrake).
-        */
-
-
-        // We call the method AnimateWheelMeshes() in order to match the wheel collider movements with the 3D meshes of the wheels.
-        AnimateWheelMeshes();
-    }
-
-    // This method converts the car speed data from float to string, and then set the text of the UI carSpeedText with this value.
     public void CarSpeedUI()
     {
         if (useUI)
@@ -352,17 +318,14 @@ public class PrometeoCarController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// POINTER UP - POINTER DOWN
-    /// </summary>
-    /// 
+
     /// <summary>
     /// Right Button Pointers
     /// </summary>
     public void RightPointerDown()
     {
         _stopTurn = false;
-        Invoke("MakeRightVariableTrue", 0.005f);
+        MakeRightVariableTrue();
     }
 
     public void RightPointerUp()
@@ -372,7 +335,7 @@ public class PrometeoCarController : MonoBehaviour
         _stopTurn = true;
         if (_stopTurn == true)
         {
-            steeringAxis = 0f;
+            ResetSteeringAngle();
         }
     }
 
@@ -382,7 +345,7 @@ public class PrometeoCarController : MonoBehaviour
     public void LeftPointerDown()
     {
         _stopTurn = false;
-        Invoke("MakeLeftVariableTrue", 0.005f);
+        MakeLeftVariableTrue();
     }
 
     public void LeftPointerUp()
@@ -391,7 +354,7 @@ public class PrometeoCarController : MonoBehaviour
         _stopTurn = true;
         if (_stopTurn == true)
         {
-            steeringAxis = 0f;
+            ResetSteeringAngle();
         }
     }
 
@@ -401,14 +364,15 @@ public class PrometeoCarController : MonoBehaviour
     public void BrakePointerDown()
     {
         _stopBrake = false;
-        Invoke("MakeBrakeVariableTrue", 0.005f);
+        MakeBrakeVariableTrue();
+        CancelInvoke("DecelerateCar");
     }
 
     public void BrakePointerUp()
     {
         _isBrake = false;
-
         _stopBrake = true;
+        RecoverTraction();
     }
 
     /// <summary>
@@ -416,8 +380,10 @@ public class PrometeoCarController : MonoBehaviour
     /// </summary>
     public void AccelPointerDown()
     {
+        _isAccel = true;
         _stopAccel = false;
-        Invoke("MakeAccelVariableTrue", 0.005f);
+        MakeAccelVariableTrue();
+        CancelInvoke("DecelerateCar");
     }
 
     public void AccelPointerUp()
@@ -490,7 +456,7 @@ public class PrometeoCarController : MonoBehaviour
         _isAccel = false;
         if (_stopAccel == false)
         {
-            Invoke("MakeAccelVariableTrue", 0.005f);
+            MakeAccelVariableTrue();
         }
     }
 
@@ -555,7 +521,7 @@ public class PrometeoCarController : MonoBehaviour
     //The following method turns the front car wheels to the left. The speed of this movement will depend on the steeringSpeed variable.
     public void TurnLeft()
     {
-        steeringAxis = steeringAxis - (Time.deltaTime * 35f * steeringSpeed);
+        steeringAxis = steeringAxis - (Time.deltaTime * 40f * steeringSpeed);
         if (steeringAxis < -1f)
         {
             steeringAxis = -1f;
@@ -577,7 +543,7 @@ public class PrometeoCarController : MonoBehaviour
     //The following method turns the front car wheels to the right. The speed of this movement will depend on the steeringSpeed variable.
     public void TurnRight()
     {
-        steeringAxis = steeringAxis + (Time.deltaTime * 35f * steeringSpeed);
+        steeringAxis = steeringAxis + (Time.deltaTime * 40f * steeringSpeed);
         if (steeringAxis > 1f)
         {
             steeringAxis = 1f;
@@ -865,8 +831,6 @@ public class PrometeoCarController : MonoBehaviour
     // it is high, then you could make the car to feel like going on ice.
     public void Handbrake()
     {
-        Debug.Log("Touching");
-
         CancelInvoke("RecoverTraction");
 
         // We are going to start losing traction smoothly, there is were our 'driftingAxis' variable takes
@@ -1043,6 +1007,87 @@ public class PrometeoCarController : MonoBehaviour
             rearRightCollider.sidewaysFriction = RRwheelFriction;
 
             driftingAxis = 0f;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        Debug.Log(steeringAxis.ToString());
+        carSpeed =
+            (
+                2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60
+            ) /
+            1000;
+
+        // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
+        localVelocityX =
+            transform.InverseTransformDirection(carRigidbody.velocity).x;
+
+        // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
+        localVelocityZ =
+            transform.InverseTransformDirection(carRigidbody.velocity).z;
+        AnimateWheelMeshes();
+
+        if (_isTurnRight == true)
+        {
+            MakeRightVariableFalse();
+            TurnRight();
+        }
+
+        if (_isTurnLeft == true)
+        {
+            MakeLeftVariableFalse();
+            TurnLeft();
+        }
+
+        if (_isBrake == true)
+        {
+            MakeBrakeVariableFalse();
+            Handbrake();
+        }
+
+        if (_isAccel == true)
+        {
+            MakeAccelVariableTrue();
+            GoForward();
+        }
+
+        if (_isAccel == false)
+        {
+            ThrottleOff();
+        }
+
+        // if(Input.GetKey(KeyCode.W)){
+        //     CancelInvoke("DecelerateCar");
+        //     GoForward();
+        // }
+        // if(Input.GetKey(KeyCode.S)){
+        //     CancelInvoke("DecelerateCar");
+        //     GoReverse();
+        // }
+        //
+        // if(Input.GetKey(KeyCode.A)){
+        //     TurnLeft();
+        // }
+        // if(Input.GetKey(KeyCode.D)){
+        //     TurnRight();
+        // }
+        // if(Input.GetKey(KeyCode.Space)){
+        //     CancelInvoke("DecelerateCar");
+        //     Handbrake();
+        // }
+        // if(Input.GetKeyUp(KeyCode.Space)){
+        //     RecoverTraction();
+        // }
+        // if((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))){
+        //     ThrottleOff();
+        // }
+        // if((!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W)) && !Input.GetKey(KeyCode.Space)){
+        //     InvokeRepeating("DecelerateCar", 0f, 0.1f);
+        // }
+        if (_isTurnRight == false && _isTurnLeft == false && steeringAxis != 0f)
+        {
+            ResetSteeringAngle();
         }
     }
 }

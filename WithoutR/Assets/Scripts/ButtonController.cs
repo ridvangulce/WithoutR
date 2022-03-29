@@ -23,10 +23,6 @@ public class ButtonController : MonoBehaviour
 
 
     /// <summary>
-    /// POINTER UP - POINTER DOWN
-    /// </summary>
-    /// 
-    /// <summary>
     /// Right Button Pointers
     /// </summary>
     public void RightPointerDown()
@@ -79,7 +75,6 @@ public class ButtonController : MonoBehaviour
         _isBrake = false;
 
         _stopBrake = true;
-      
     }
 
     /// <summary>
@@ -95,13 +90,9 @@ public class ButtonController : MonoBehaviour
     {
         _isAccel = false;
         _stopAccel = true;
-       
     }
 
-    /// <summary>
-    /// VARIABLES
-    /// </summary>
-    /// 
+
     /// <summary>
     /// Right Button Variable
     /// </summary>
@@ -199,7 +190,6 @@ public class ButtonController : MonoBehaviour
             MakeAccelVariableFalse();
             prometeoCarController.GoForward();
             Debug.Log("Go Forward");
-            CancelInvoke("");
         }
     }
 }
