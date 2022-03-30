@@ -1,0 +1,4 @@
+#Thu Mar 31 02:11:26 EET 2022
+base.0=/Users/Ridvan/Desktop/UnityProjects/WithoutR/WithoutR/WithoutR/Temp/gradleOut/launcher/build/intermediates/dex/release/mergeDexRelease/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

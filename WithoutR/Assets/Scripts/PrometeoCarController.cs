@@ -319,147 +319,6 @@ public class PrometeoCarController : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Right Button Pointers
-    /// </summary>
-    public void RightPointerDown()
-    {
-        _stopTurn = false;
-        MakeRightVariableTrue();
-    }
-
-    public void RightPointerUp()
-    {
-        _isTurnRight = false;
-
-        _stopTurn = true;
-        if (_stopTurn == true)
-        {
-            ResetSteeringAngle();
-        }
-    }
-
-    /// <summary>
-    /// Left Button Pointers
-    /// </summary>
-    public void LeftPointerDown()
-    {
-        _stopTurn = false;
-        MakeLeftVariableTrue();
-    }
-
-    public void LeftPointerUp()
-    {
-        _isTurnLeft = false;
-        _stopTurn = true;
-        if (_stopTurn == true)
-        {
-            ResetSteeringAngle();
-        }
-    }
-
-    /// <summary>
-    /// Brake Pointers
-    /// </summary>
-    public void BrakePointerDown()
-    {
-        _stopBrake = false;
-        MakeBrakeVariableTrue();
-        CancelInvoke("DecelerateCar");
-    }
-
-    public void BrakePointerUp()
-    {
-        _isBrake = false;
-        _stopBrake = true;
-        RecoverTraction();
-    }
-
-    /// <summary>
-    /// Accel Pointers
-    /// </summary>
-    public void AccelPointerDown()
-    {
-        _isAccel = true;
-        _stopAccel = false;
-        MakeAccelVariableTrue();
-        CancelInvoke("DecelerateCar");
-    }
-
-    public void AccelPointerUp()
-    {
-        _isAccel = false;
-        _stopAccel = true;
-    }
-
-
-    public void MakeRightVariableTrue()
-    {
-        _isTurnRight = true;
-    }
-
-
-    public void MakeRightVariableFalse()
-    {
-        _isTurnRight = false;
-        if (_stopTurn == false)
-        {
-            Invoke("MakeRightVariableTrue", 0.005f);
-        }
-    }
-
-
-    /// <summary>
-    /// Left Button Variable
-    /// </summary>
-    public void MakeLeftVariableTrue()
-    {
-        _isTurnLeft = true;
-    }
-
-    public void MakeLeftVariableFalse()
-    {
-        _isTurnLeft = false;
-        if (_stopTurn == false)
-        {
-            Invoke("MakeLeftVariableTrue", 0.005f);
-        }
-    }
-
-    /// <summary>
-    /// Brake Variable
-    /// </summary>
-    public void MakeBrakeVariableTrue()
-    {
-        _isBrake = true;
-    }
-
-    public void MakeBrakeVariableFalse()
-    {
-        _isBrake = false;
-        if (_stopBrake == false)
-        {
-            Invoke("MakeBrakeVariableTrue", 0.005f);
-        }
-    }
-
-    /// <summary>
-    /// Accel Variable
-    /// </summary>
-    public void MakeAccelVariableTrue()
-    {
-        _isAccel = true;
-    }
-
-    public void MakeAccelVariableFalse()
-    {
-        _isAccel = false;
-        if (_stopAccel == false)
-        {
-            MakeAccelVariableTrue();
-        }
-    }
-
     // This method controls the car sounds. For example, the car engine will sound slow when the car speed is low because the
     // pitch of the sound will be at its lowest point. On the other hand, it will sound fast when the car speed is high because
     // the pitch of the sound will be the sum of the initial pitch + the car speed divided by 100f.
@@ -777,7 +636,6 @@ public class PrometeoCarController : MonoBehaviour
         else
         {
             isDrifting = false;
-            DriftCarPS();
         }
 
         // The following part resets the throttle power to 0 smoothly.
@@ -1010,6 +868,132 @@ public class PrometeoCarController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Right Button Pointers
+    /// </summary>
+    public void RightPointerDown()
+    {
+        _stopTurn = false;
+        MakeRightVariableTrue();
+    }
+
+    public void RightPointerUp()
+    {
+        _isTurnRight = false;
+
+        _stopTurn = true;
+        if (_stopTurn == true)
+        {
+            ResetSteeringAngle();
+        }
+    }
+
+    /// <summary>
+    /// Left Button Pointers
+    /// </summary>
+    public void LeftPointerDown()
+    {
+        _stopTurn = false;
+        MakeLeftVariableTrue();
+    }
+
+    public void LeftPointerUp()
+    {
+        _isTurnLeft = false;
+        _stopTurn = true;
+        if (_stopTurn == true)
+        {
+            ResetSteeringAngle();
+        }
+    }
+
+    /// <summary>
+    /// Brake Pointers
+    /// </summary>
+    public void BrakePointerDown()
+    {
+        _isBrake = true;
+        _stopBrake = false;
+        MakeBrakeVariableTrue();
+        CancelInvoke("DecelerateCar");
+    }
+
+    public void BrakePointerUp()
+    {
+        _isBrake = false;
+        _stopBrake = true;
+    }
+
+    /// <summary>
+    /// Accel Pointers
+    /// </summary>
+    public void AccelPointerDown()
+    {
+        _isAccel = true;
+        _stopAccel = false;
+        MakeAccelVariableTrue();
+        CancelInvoke("DecelerateCar");
+    }
+
+    public void AccelPointerUp()
+    {
+        _isAccel = false;
+        _stopAccel = true;
+    }
+
+    /// <summary>
+    /// Right Button Variable
+    /// </summary>
+    public void MakeRightVariableTrue()
+    {
+        _isTurnRight = true;
+    }
+
+
+    public void MakeRightVariableFalse()
+    {
+        _isTurnRight = false;
+        if (_stopTurn == false)
+        {
+            Invoke("MakeRightVariableTrue", 0.005f);
+        }
+    }
+
+
+    /// <summary>
+    /// Left Button Variable
+    /// </summary>
+    public void MakeLeftVariableTrue()
+    {
+        _isTurnLeft = true;
+    }
+
+    public void MakeLeftVariableFalse()
+    {
+        _isTurnLeft = false;
+        if (_stopTurn == false)
+        {
+            Invoke("MakeLeftVariableTrue", 0.005f);
+        }
+    }
+
+    /// <summary>
+    /// Brake Variable
+    /// </summary>
+    public void MakeBrakeVariableTrue()
+    {
+        _isBrake = true;
+    }
+
+    /// <summary>
+    /// Accel Variable
+    /// </summary>
+    public void MakeAccelVariableTrue()
+    {
+        _isAccel = true;
+    }
+
     void FixedUpdate()
     {
         Debug.Log(steeringAxis.ToString());
@@ -1042,10 +1026,14 @@ public class PrometeoCarController : MonoBehaviour
 
         if (_isBrake == true)
         {
-            MakeBrakeVariableFalse();
+            MakeBrakeVariableTrue();
             Handbrake();
         }
 
+        if (_isBrake == false)
+        {
+            RecoverTraction();
+        }
         if (_isAccel == true)
         {
             MakeAccelVariableTrue();
@@ -1056,6 +1044,7 @@ public class PrometeoCarController : MonoBehaviour
         {
             ThrottleOff();
         }
+        
 
         // if(Input.GetKey(KeyCode.W)){
         //     CancelInvoke("DecelerateCar");
