@@ -16,7 +16,6 @@ using UnityEngine.UI;
 
 public class PrometeoCarController : MonoBehaviour
 {
-    private ButtonController buttonController;
 
     //CAR SETUP
 
@@ -179,7 +178,6 @@ public class PrometeoCarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttonController = FindObjectOfType<ButtonController>();
         //In this part, we set the 'carRigidbody' value with the Rigidbody attached to this
         //gameObject. Also, we define the center of mass of the car with the Vector3 given
         //in the inspector.
@@ -746,6 +744,7 @@ public class PrometeoCarController : MonoBehaviour
         // and, as a consequense, the car starts to emit trails to simulate the wheel skids.
         isTractionLocked = true;
         DriftCarPS();
+        Brakes();
     }
 
     // This function is used to emit both the particle systems of the tires' smoke and the trail renderers of the tire skids
