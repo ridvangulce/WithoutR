@@ -23,7 +23,7 @@ public class PrometeoCarController : MonoBehaviour
     [Space(20)]
     //[Header("CAR SETUP")]
     [Space(10)]
-    [Range(20, 250)]
+    [Range(20, 1000)]
     public int maxSpeed = 90; //The maximum speed that the car can reach in km/h.
 
     [Range(10, 120)]
@@ -995,7 +995,6 @@ public class PrometeoCarController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(steeringAxis.ToString());
         carSpeed =
             (
                 2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60

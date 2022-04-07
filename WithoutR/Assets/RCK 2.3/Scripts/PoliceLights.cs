@@ -3,10 +3,8 @@ using System.Collections;
 
 public class PoliceLights : MonoBehaviour
 {
-
-
-
     public bool activeLight = true;
+    public bool isActive = false;
 
     public float time = 20;
 
@@ -18,13 +16,9 @@ public class PoliceLights : MonoBehaviour
     public Light[] RedLights;
     public Light[] BlueLights;
 
-    
 
     private float timer = 0.0f;
     private int lightNum = 0;
-
-   
-
 
 
     void Awake()
@@ -36,16 +30,24 @@ public class PoliceLights : MonoBehaviour
         }
     }
 
+    public void ActiveLight()
+    {
+        if (isActive == false)
+        {
+            activeLight = true;
+            isActive = true;
+        }
+        else
+        {
+            activeLight = false;
+            isActive = false;
+        }
+    } 
 
     void Update()
     {
-
-
-
         if (!activeLight)
         {
-
-
             if (policeAudioSource.mute == false)
             {
                 policeAudioSource.clip = policeAudioClips[Random.Range(0, policeAudioClips.Length)];
@@ -67,18 +69,19 @@ public class PoliceLights : MonoBehaviour
         }
 
 
-
-
         timer = Mathf.MoveTowards(timer, 0.0f, Time.deltaTime * time);
 
 
         if (timer == 0)
         {
             lightNum++;
-            if (lightNum > 12) { lightNum = 1; }
+            if (lightNum > 12)
+            {
+                lightNum = 1;
+            }
+
             timer = 1.0f;
         }
-
 
 
         if (policeAudioSource)
@@ -88,11 +91,8 @@ public class PoliceLights : MonoBehaviour
         }
 
 
-    
-
         if (lightNum == 1 || lightNum == 3)
         {
-
             foreach (Light RedLight in RedLights)
             {
                 RedLight.enabled = true;
@@ -106,7 +106,6 @@ public class PoliceLights : MonoBehaviour
 
         if (lightNum == 5 || lightNum == 7)
         {
-
             foreach (Light BlueLight in BlueLights)
             {
                 BlueLight.enabled = true;
@@ -121,7 +120,6 @@ public class PoliceLights : MonoBehaviour
 
         if (lightNum == 2 || lightNum == 4 || lightNum == 6 || lightNum == 8)
         {
-
             foreach (Light BlueLight in BlueLights)
             {
                 BlueLight.enabled = false;
@@ -132,17 +130,5 @@ public class PoliceLights : MonoBehaviour
                 RedLight.enabled = false;
             }
         }
-
-
-
-
-
     }
-
-
-
 }
-
-
-
-
