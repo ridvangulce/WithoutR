@@ -19,20 +19,20 @@ public class VehicleControl : MonoBehaviour
     /// <summary>
     /// Button Variables
     /// </summary>
-    private bool _isTurnRight;
+    [HideInInspector] public bool _isTurnRight;
 
-    private bool _isTurnLeft;
-    private bool _isBrake;
-    private bool _isAccel;
-    private bool _stopBrake;
-    private bool _stopTurn;
-    private bool _stopAccel;
-    private bool _isHandbrake;
-    private bool _stopHandbrake;
+    [HideInInspector] public bool _isTurnLeft;
+    [HideInInspector] public bool _isBrake;
+    [HideInInspector] public bool _isAccel;
+    [HideInInspector] public bool _stopBrake;
+    [HideInInspector] public bool _stopTurn;
+    [HideInInspector] public bool _stopAccel;
+    [HideInInspector] public bool _isHandbrake;
+    [HideInInspector] public bool _stopHandbrake;
 
+    [HideInInspector]
 
     // Wheels Setting /////////////////////////////////
-
     public CarWheels carWheels;
 
     [System.Serializable]
