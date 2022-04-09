@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
+using PathCreation.Examples;
 
 public class VehicleDamage : MonoBehaviour
 {
-
 
 
     public float maxMoveDelta = 1.0f; // maximum distance one vertice moves per explosion (in meters)
@@ -39,6 +39,7 @@ public class VehicleDamage : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+       
 
         //  if (collision.gameObject.CompareTag("car")) return;
 
@@ -97,7 +98,7 @@ public class VehicleDamage : MonoBehaviour
                 flatVertToCenterDir.y = 0.0f;
 
 
-                // 0.5 - 1 => 45° to 0°  / current vertice is nearer to exploPos than center of bounds
+                // 0.5 - 1 => 45ï¿½ to 0ï¿½  / current vertice is nearer to exploPos than center of bounds
                 if (originToMeDir.sqrMagnitude < sqrDemRange) //dot > 0.8f )
                 {
                     float dist = Mathf.Clamp01(originToMeDir.sqrMagnitude / sqrDemRange);
