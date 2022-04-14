@@ -4,54 +4,46 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using PathCreation.Examples;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DestroyEnemy : MonoBehaviour
 {
     private Coroutine _coroutine;
     public GameObject prefab;
     public PathFollower pathFollower;
-    [HideInInspector]
-    public bool _isDestroy;
+    [HideInInspector] public bool isDestroy;
+    
 
-    // Update is called once per frame
-
-    private void Start()
-    {
-    }
-
+   
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Police"))
+        if (collider.gameObject.CompareTag("Enemy"))
         {
-            pathFollower.enabled = false;
-            Destroy(gameObject);
-            Debug.Log("Destroyed");
-            _isDestroy = true;
+            Destroy(collider.gameObject);
+            isDestroy = true;
+            Debug.Log(isDestroy);
+            if (isDestroy == true)
+            {
+                StartCoroutine(SpawnCoroutine());
+            }
         }
     }
 
-
-    private void Update()
-    {
-        if (_isDestroy == true)
-        {
-            StartCoroutine(SpawnCoroutine());
-            _isDestroy = false;
-        }
-    }
 
     IEnumerator SpawnCoroutine()
     {
-        Instantiate(prefab, transform.position, transform.rotation);
+        Debug.Log("Start Coroutine");
+        yield return new WaitForSeconds(5f);
+        Instantiate(prefab, prefab.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
-        yield return new WaitForSeconds(1);
+        isDestroy = false;
     }
 
-    public void Spawn()
-    {
-        if (pathFollower.enabled == false)
-        {
-            Instantiate(prefab, transform.position, transform.rotation);
-        }
-    }
+    // public void Spawn()
+    // {
+    //     if (pathFollower.enabled == false)
+    //     {
+    //         Instantiate(prefab, transform.position, transform.rotation);
+    //     }
+    // }
 }

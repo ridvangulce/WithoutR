@@ -591,13 +591,13 @@ public class VehicleControl : MonoBehaviour
         if (_isTurnRight == true)
         {
             MakeRightVariableFalse();
-            steerAmount = Mathf.Lerp(steerAmount, 2f, 0.5f);
+            steerAmount = Mathf.Lerp(steerAmount, 2f, 0.3f);
         }
 
         if (_isTurnLeft == true)
         {
             MakeLeftVariableFalse();
-            steerAmount = Mathf.Lerp(steerAmount, -2f, 0.5f);
+            steerAmount = Mathf.Lerp(steerAmount, -2f, 0.3f);
         }
 
         if (_isBrake == true)
