@@ -9,35 +9,55 @@ using UnityEngine.Serialization;
 public class DestroyEnemy : MonoBehaviour
 {
     private Coroutine _coroutine;
-    public GameObject prefab;
-    public PathFollower pathFollower;
+    public GameObject oldCar;
+    public GameObject rallyCar;
     [HideInInspector] public bool isDestroy;
-    
+    [HideInInspector] public bool changePrefab;
 
-   
+
+    private void Start()
+    {
+        StartCoroutine(SpawnCoroutineOldCar());
+    }
+
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.CompareTag("Enemy"))
         {
             Destroy(collider.gameObject);
             isDestroy = true;
-            Debug.Log(isDestroy);
-            if (isDestroy == true)
+            if (isDestroy == true && changePrefab)
             {
-                StartCoroutine(SpawnCoroutine());
+                StartCoroutine(SpawnCoroutineOldCar());
+                changePrefab = false;
+            }
+            if (isDestroy == true && !changePrefab )
+            {
+                StartCoroutine(SpawnCoroutineRallyCar());
+                changePrefab = true;
             }
         }
     }
 
 
-    IEnumerator SpawnCoroutine()
+    IEnumerator SpawnCoroutineOldCar()
     {
         Debug.Log("Start Coroutine");
         yield return new WaitForSeconds(5f);
-        Instantiate(prefab, prefab.transform.position, Quaternion.identity);
+        Instantiate(oldCar, oldCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
     }
+    IEnumerator SpawnCoroutineRallyCar()
+    {
+        Debug.Log("Start Coroutine");
+        yield return new WaitForSeconds(5f);
+        Instantiate(rallyCar,rallyCar.transform.position, Quaternion.identity);
+        Debug.Log("Spawned");
+        isDestroy = false;
+    }
+   
 
     // public void Spawn()
     // {

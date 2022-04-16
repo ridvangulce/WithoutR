@@ -7,8 +7,10 @@ TagManager:
   - Stone
   - Grass
   - Street
-  - Enemy
   - Police
+  - RallyCar
+  - OldCar
+  - Enemy
   layers:
   - Default
   - TransparentFX

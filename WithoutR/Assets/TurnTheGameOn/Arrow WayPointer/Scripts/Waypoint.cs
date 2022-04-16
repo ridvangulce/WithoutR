@@ -16,12 +16,7 @@
 			}
 		}
 
-		void OnTriggerEnter (Collider col) {
-			if(col.gameObject.tag == "Player"){
-				waypointController.WaypointEvent (waypointNumber);
-				waypointController.ChangeTarget ();
-			}
-		}
+		
 
 		#if UNITY_EDITOR
 		void OnDrawGizmosSelected(){
