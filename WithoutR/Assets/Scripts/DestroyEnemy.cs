@@ -13,11 +13,15 @@ public class DestroyEnemy : MonoBehaviour
     public GameObject rallyCar;
     [HideInInspector] public bool isDestroy;
     [HideInInspector] public bool changePrefab;
+    public Timer timer;
+    public GameObject explosionEffect;
+    public GameObject waypointArrow;
 
 
     private void Start()
     {
         StartCoroutine(SpawnCoroutineOldCar());
+        waypointArrow.SetActive(false);
     }
 
 
@@ -27,16 +31,27 @@ public class DestroyEnemy : MonoBehaviour
         {
             Destroy(collider.gameObject);
             isDestroy = true;
+            if (isDestroy == true)
+            {
+                StartCoroutine(ExplodeCoroutine());
+            }
+
             if (isDestroy == true && changePrefab)
             {
                 StartCoroutine(SpawnCoroutineOldCar());
                 changePrefab = false;
+                isDestroy = false;
             }
-            if (isDestroy == true && !changePrefab )
+
+            if (isDestroy == true && !changePrefab)
             {
                 StartCoroutine(SpawnCoroutineRallyCar());
                 changePrefab = true;
+                isDestroy = false;
             }
+
+
+            timer.gameObject.SetActive(false);
         }
     }
 
@@ -48,16 +63,30 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(oldCar, oldCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
+        timer._time = 90f;
+        timer.gameObject.SetActive(true);
+        waypointArrow.SetActive(true);
     }
+
     IEnumerator SpawnCoroutineRallyCar()
     {
         Debug.Log("Start Coroutine");
         yield return new WaitForSeconds(5f);
-        Instantiate(rallyCar,rallyCar.transform.position, Quaternion.identity);
+        Instantiate(rallyCar, rallyCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
+        timer._time = 90f;
+        timer.gameObject.SetActive(true);
+        waypointArrow.SetActive(true);
     }
-   
+
+    IEnumerator ExplodeCoroutine()
+    {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        yield return new WaitForSeconds(3f);
+        Destroy(GameObject.FindWithTag("Effect"));
+    }
+
 
     // public void Spawn()
     // {

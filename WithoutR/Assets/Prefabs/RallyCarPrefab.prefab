@@ -10951,6 +10951,7 @@ GameObject:
   - component: {fileID: 4851821917559706841}
   - component: {fileID: 4851821916625753250}
   - component: {fileID: 6846992002146903564}
+  - component: {fileID: 5292235469197298281}
   m_Layer: 1
   m_Name: RallyCarPrefab
   m_TagString: Enemy
@@ -11007,15 +11008,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlMode: 2
   activeControl: 1
-  _isTurnRight: 0
-  _isTurnLeft: 0
-  _isBrake: 0
-  _isAccel: 0
-  _stopBrake: 0
-  _stopTurn: 0
-  _stopAccel: 0
-  _isHandbrake: 0
-  _stopHandbrake: 0
   carWheels:
     wheels:
       frontWheelDrive: 1
@@ -11146,6 +11138,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5187123, y: 1.8193729, z: 5.950777}
   m_Center: {x: -0.015285612, y: 1.1098992, z: 0.29356933}
+--- !u!114 &5292235469197298281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851821917553158863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecc48107f72f46f1a908898fcc78612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
+    type: 3}
 --- !u!1 &4851821917553162829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12417,6 +12423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Waypoint Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 13108806177404765, guid: ff1cce6674e514b9295cbe1e13728650,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff1cce6674e514b9295cbe1e13728650, type: 3}

@@ -11,6 +11,7 @@ TagManager:
   - RallyCar
   - OldCar
   - Enemy
+  - Effect
   layers:
   - Default
   - TransparentFX

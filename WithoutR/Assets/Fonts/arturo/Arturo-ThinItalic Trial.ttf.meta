@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: c7fdcf20ab3ff430993eaa9603cb60e6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Arturo Trial
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 515b9273a8ec541d7a65d527d6739257, type: 3}
+  - {fileID: 12800000, guid: a7bd114ea38ca446da81ae69ca58174f, type: 3}
+  - {fileID: 12800000, guid: 073b27ab9c89349c9ad1896433c28dd4, type: 3}
+  - {fileID: 12800000, guid: 61ecf3843303c484aa654a9151dfcbba, type: 3}
+  - {fileID: 12800000, guid: 970cb39055efa498f881579b76dcd819, type: 3}
+  - {fileID: 12800000, guid: a0c3283aeea2943caab543448e5cb919, type: 3}
+  - {fileID: 12800000, guid: 0432c48abf5f64364abe21b459bebef8, type: 3}
+  - {fileID: 12800000, guid: 353ad89358c9e4e509ddd09529cfb54f, type: 3}
+  - {fileID: 12800000, guid: 00b47906752f44c80a11459461d81d9c, type: 3}
+  - {fileID: 12800000, guid: e6501b18c04d34866bff671d879ed17c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
