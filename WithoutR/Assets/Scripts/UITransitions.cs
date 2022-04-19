@@ -10,6 +10,7 @@ public class UITransitions : MonoBehaviour
 {
     public CinemachineVirtualCamera currentCamera;
 
+
     private void Start()
     {
         currentCamera.Priority++;

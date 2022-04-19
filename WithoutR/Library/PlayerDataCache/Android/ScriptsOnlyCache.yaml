@@ -1,12 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AdController
     - DestroyEnemy
     - Explode
     - PathCreation.Examples.PathFollower
     - PauseMenu
     - PoliceLights
     - RetryMenu
+    - RewardAdControl
     - ScoreManager
     - Skidmarks
     - Timer
@@ -22,8 +24,14 @@ ScriptsOnlyBuild:
     - Cinemachine.CinemachinePipeline
     - Cinemachine.CinemachineTransposer
     - Cinemachine.CinemachineVirtualCamera
+    GoogleMobileAds.Common.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
+    GoogleMobileAds.Editor.dll:
+    - GoogleMobileAds.Editor.GoogleMobileAdsSettings
     PathCreator.dll:
     - PathCreation.PathCreator
+    Unity.Mobile.AndroidLogcat.Editor.dll:
+    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.PlasticSCM.Editor.dll:
     - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
@@ -53,7 +61,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/MainMenu.unity:
+    Assets/Scenes/Level 0.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -128,6 +136,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5308}
     - Class: 114
       Script: {instanceID: 5774}
+    - Class: 114
+      Script: {instanceID: 25782}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -142,7 +152,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/Scenes/Touch.unity:
+    Assets/Scenes/Level 1.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -235,6 +245,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5820}
     - Class: 114
       Script: {instanceID: 5830}
+    - Class: 114
+      Script: {instanceID: 26734}
+    - Class: 114
+      Script: {instanceID: 46128}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 119
@@ -450,7 +464,7 @@ ScriptsOnlyBuild:
     className: ExtinguishableFire
   - hash:
       serializedVersion: 2
-      Hash: 0c9d0af6614b40fd1d6ab95919829e70
+      Hash: ab4a3e7ffd43b1abbf8b6c27b06110dd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DestroyEnemy
@@ -1450,8 +1464,38 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GunAim
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.Common.dll
+    namespaceName: GoogleMobileAds.Common
+    className: MobileAdsEventExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: bc8d0afeebc008570ffede5254e873af
+    assemblyName: GoogleMobileAds.Editor.dll
+    namespaceName: GoogleMobileAds.Editor
+    className: GoogleMobileAdsSettings
+  - hash:
+      serializedVersion: 2
+      Hash: 1a9dbcb36efe2f4b4e68cd896eb1f418
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdController
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LevelLoader
+  - hash:
+      serializedVersion: 2
+      Hash: 66091c0c11b55f2b99bd6a37f7bbd229
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RewardAdControl
   platform: 13
   scenePathNames:
-  - Assets/Scenes/MainMenu.unity
-  - Assets/Scenes/Touch.unity
-  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.3.apk
+  - Assets/Scenes/Level 0.unity
+  - Assets/Scenes/Level 1.unity
+  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.5.apk

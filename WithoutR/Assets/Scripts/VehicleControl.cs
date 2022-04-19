@@ -18,7 +18,8 @@ public class VehicleControl : MonoBehaviour
     public ControlMode controlMode = ControlMode.simple;
 
     public bool activeControl = false;
-
+    
+    
     private void Start()
     {
         pauseMenu.Resume();
@@ -257,6 +258,7 @@ public class VehicleControl : MonoBehaviour
 
     void Awake()
     {
+
         if (carSetting.automaticGear) NeutralGear = false;
 
         myRigidbody = transform.GetComponent<Rigidbody>();

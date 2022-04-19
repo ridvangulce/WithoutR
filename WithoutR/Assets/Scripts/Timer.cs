@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GoogleMobileAds.Api;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,15 @@ public class Timer : MonoBehaviour
         if (_time > 0)
         {
             _time -= Time.deltaTime;
+        }
+        else if (RewardAdControl.Current.isReward==true)
+        {
+            _time = 120f;
+            retryCanvas.SetActive(false);
+            controlCanvas.SetActive(true);
+            Time.timeScale = 1f;
+            AudioListener.volume = 1f;
+            RewardAdControl.Current.isReward = false;
         }
         else
         {

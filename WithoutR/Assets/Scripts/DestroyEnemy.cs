@@ -18,6 +18,7 @@ public class DestroyEnemy : MonoBehaviour
     public Timer timer;
     public GameObject explosionEffect;
     public GameObject waypointArrow;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -50,7 +51,7 @@ public class DestroyEnemy : MonoBehaviour
                 changePrefab = true;
                 isDestroy = false;
             }
-            
+            audioSource.Play();
             ScoreManager.scorValue += 100;
             waypointArrow.SetActive(false);
             timer.gameObject.SetActive(false);
@@ -68,6 +69,7 @@ public class DestroyEnemy : MonoBehaviour
         timer._time = 120f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
+        audioSource.Stop();
     }
 
     IEnumerator SpawnCoroutineRallyCar()
@@ -80,6 +82,7 @@ public class DestroyEnemy : MonoBehaviour
         timer._time = 120f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
+        audioSource.Stop();
     }
 
     IEnumerator ExplodeCoroutine()
