@@ -11006,6 +11006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00030e199cdd9934dbd15380a1bcabab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
   controlMode: 2
   activeControl: 1
   carWheels:
@@ -11124,7 +11125,7 @@ MonoBehaviour:
   pathCreator: {fileID: 4670367202487303606, guid: da5520a6880c24f3990358e2174d9c12,
     type: 3}
   endOfPathInstruction: 0
-  speed: 5
+  speed: 30
 --- !u!65 &6846992002146903564
 BoxCollider:
   m_ObjectHideFlags: 0

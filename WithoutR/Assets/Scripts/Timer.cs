@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float _time = 90;
+    public float _time = 150f;
     public Text text;
+    public GameObject retryCanvas;
+    public GameObject controlCanvas;
 
     // Update is called once per frame
     private void Start()
     {
         gameObject.SetActive(false);
+        retryCanvas.SetActive(false);
     }
 
     void Update()
@@ -23,7 +26,10 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            _time = 90;
+            retryCanvas.SetActive(true);
+            controlCanvas.SetActive(false);
+            Time.timeScale = 0f;
+            AudioListener.volume = 0f;
         }
         DisplayTime(_time);
     }

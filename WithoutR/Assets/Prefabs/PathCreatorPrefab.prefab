@@ -53,7 +53,7 @@ MonoBehaviour:
       - {x: 13.716895, y: 0, z: -11.96632}
       - {x: 0.9690144, y: 0, z: -39.06572}
       - {x: 0.8242645, y: 0, z: -55.812588}
-      - {x: 0.6415838, y: 0, z: -76.94787}
+      - {x: 1.1282501, y: 0.7, z: -74.975426}
       - {x: 0.8367263, y: 0, z: -105.1311}
       - {x: 1.0903168, y: 0, z: -126.26565}
       - {x: 1.4651504, y: 0, z: -157.50475}
@@ -210,7 +210,7 @@ MonoBehaviour:
       - {x: 2.3095345, y: 0, z: -128.18355}
       - {x: 4.6691284, y: 0, z: -102.59439}
       - {x: 5.923041, y: 0, z: -88.99605}
-      - {x: -0.37138462, y: 0, z: -67.39412}
+      - {x: -0.3047409, y: 0.075431824, z: -67.39148}
       - {x: 8.78273, y: 0, z: -57.26054}
       - {x: 12.938984, y: 0, z: -52.65958}
       - {x: 22.930952, y: 0, z: -54.182034}
@@ -408,7 +408,7 @@ MonoBehaviour:
       - 0
       - 0
       globalNormalsAngle: 90
-      flipNormals: 0
+      flipNormals: 1
     vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
@@ -418,11 +418,11 @@ MonoBehaviour:
     displayAnchorPoints: 1
     displayControlPoints: 1
     bezierHandleScale: 0.1
-    globalDisplaySettingsFoldout: 0
+    globalDisplaySettingsFoldout: 1
     keepConstantHandleSize: 1
     showNormalsInVertexMode: 0
     showBezierPathInVertexMode: 0
-    showDisplayOptions: 1
+    showDisplayOptions: 0
     showPathOptions: 1
     showVertexPathDisplayOptions: 0
     showVertexPathOptions: 1

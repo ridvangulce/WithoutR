@@ -1,18 +1,41 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.PlayerLoop;
 
 public class UITransitions : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public CinemachineVirtualCamera currentCamera;
+
+    private void Start()
     {
-        
+        currentCamera.Priority++;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateCamera(CinemachineVirtualCamera target)
     {
-        
+        currentCamera.Priority--;
+        currentCamera = target;
+        currentCamera.Priority++;
+    }
+
+    public void StartGame(CinemachineVirtualCamera target)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        ScoreManager.scorValue = 0;
+    }
+
+    private void Update()
+    {
+        Debug.Log(currentCamera.name);
+        Debug.Log(currentCamera.Priority);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

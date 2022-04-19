@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using PathCreation.Examples;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class DestroyEnemy : MonoBehaviour
 {
@@ -16,7 +18,6 @@ public class DestroyEnemy : MonoBehaviour
     public Timer timer;
     public GameObject explosionEffect;
     public GameObject waypointArrow;
-
 
     private void Start()
     {
@@ -49,8 +50,9 @@ public class DestroyEnemy : MonoBehaviour
                 changePrefab = true;
                 isDestroy = false;
             }
-
-
+            
+            ScoreManager.scorValue += 100;
+            waypointArrow.SetActive(false);
             timer.gameObject.SetActive(false);
         }
     }
@@ -63,7 +65,7 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(oldCar, oldCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
-        timer._time = 90f;
+        timer._time = 150f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
     }
@@ -75,7 +77,7 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(rallyCar, rallyCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
-        timer._time = 90f;
+        timer._time = 150f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
     }
