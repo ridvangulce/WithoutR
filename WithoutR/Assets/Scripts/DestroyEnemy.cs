@@ -65,7 +65,7 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(oldCar, oldCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
-        timer._time = 150f;
+        timer._time = 120f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
     }
@@ -77,7 +77,7 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(rallyCar, rallyCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
-        timer._time = 150f;
+        timer._time = 120f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
     }

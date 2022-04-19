@@ -11125,7 +11125,7 @@ MonoBehaviour:
   pathCreator: {fileID: 4670367202487303606, guid: da5520a6880c24f3990358e2174d9c12,
     type: 3}
   endOfPathInstruction: 0
-  speed: 30
+  speed: 40
 --- !u!65 &6846992002146903564
 BoxCollider:
   m_ObjectHideFlags: 0

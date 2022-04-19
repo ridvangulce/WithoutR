@@ -23,10 +23,7 @@ ScriptsOnlyBuild:
     - Cinemachine.CinemachineTransposer
     - Cinemachine.CinemachineVirtualCamera
     PathCreator.dll:
-    - PathCreation.GlobalDisplaySettings
     - PathCreation.PathCreator
-    Unity.Mobile.AndroidLogcat.Editor.dll:
-    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.PlasticSCM.Editor.dll:
     - Unity.PlasticSCM.Editor.PlasticWindow
     Unity.Rider.Editor.dll:
@@ -90,47 +87,47 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1554}
+      Script: {instanceID: 1558}
     - Class: 114
-      Script: {instanceID: 1940}
+      Script: {instanceID: 1944}
     - Class: 114
-      Script: {instanceID: 2338}
+      Script: {instanceID: 2344}
     - Class: 114
-      Script: {instanceID: 2526}
+      Script: {instanceID: 2532}
     - Class: 114
-      Script: {instanceID: 2704}
+      Script: {instanceID: 2710}
     - Class: 114
-      Script: {instanceID: 2744}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2828}
+      Script: {instanceID: 2836}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 2974}
     - Class: 114
-      Script: {instanceID: 3004}
+      Script: {instanceID: 3012}
     - Class: 114
-      Script: {instanceID: 3158}
+      Script: {instanceID: 3166}
     - Class: 114
-      Script: {instanceID: 3414}
+      Script: {instanceID: 3422}
     - Class: 114
-      Script: {instanceID: 3544}
+      Script: {instanceID: 3552}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3662}
     - Class: 114
-      Script: {instanceID: 3944}
+      Script: {instanceID: 3952}
     - Class: 114
-      Script: {instanceID: 4242}
+      Script: {instanceID: 4250}
     - Class: 114
-      Script: {instanceID: 4776}
+      Script: {instanceID: 4784}
     - Class: 114
-      Script: {instanceID: 4872}
+      Script: {instanceID: 4880}
     - Class: 114
-      Script: {instanceID: 4932}
+      Script: {instanceID: 4940}
     - Class: 114
-      Script: {instanceID: 5300}
+      Script: {instanceID: 5308}
     - Class: 114
-      Script: {instanceID: 5768}
+      Script: {instanceID: 5774}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -183,61 +180,61 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1554}
+      Script: {instanceID: 1558}
     - Class: 114
-      Script: {instanceID: 1876}
+      Script: {instanceID: 1880}
     - Class: 114
-      Script: {instanceID: 1940}
+      Script: {instanceID: 1944}
     - Class: 114
-      Script: {instanceID: 2022}
+      Script: {instanceID: 2026}
     - Class: 114
-      Script: {instanceID: 2072}
+      Script: {instanceID: 2076}
     - Class: 114
-      Script: {instanceID: 2296}
+      Script: {instanceID: 2270}
     - Class: 114
-      Script: {instanceID: 2352}
+      Script: {instanceID: 2302}
     - Class: 114
-      Script: {instanceID: 2472}
+      Script: {instanceID: 2358}
     - Class: 114
-      Script: {instanceID: 2526}
+      Script: {instanceID: 2478}
     - Class: 114
-      Script: {instanceID: 2610}
+      Script: {instanceID: 2532}
     - Class: 114
-      Script: {instanceID: 2704}
+      Script: {instanceID: 2616}
     - Class: 114
-      Script: {instanceID: 2744}
+      Script: {instanceID: 2710}
     - Class: 114
-      Script: {instanceID: 2782}
+      Script: {instanceID: 2750}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 2788}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 2834}
     - Class: 114
-      Script: {instanceID: 3158}
+      Script: {instanceID: 2916}
     - Class: 114
-      Script: {instanceID: 3258}
+      Script: {instanceID: 2974}
     - Class: 114
-      Script: {instanceID: 3414}
+      Script: {instanceID: 3166}
     - Class: 114
-      Script: {instanceID: 3544}
+      Script: {instanceID: 3266}
     - Class: 114
-      Script: {instanceID: 3654}
+      Script: {instanceID: 3422}
     - Class: 114
-      Script: {instanceID: 4286}
+      Script: {instanceID: 3552}
     - Class: 114
-      Script: {instanceID: 4698}
+      Script: {instanceID: 3662}
     - Class: 114
-      Script: {instanceID: 5604}
+      Script: {instanceID: 4294}
     - Class: 114
-      Script: {instanceID: 5704}
+      Script: {instanceID: 4706}
     - Class: 114
-      Script: {instanceID: 5814}
+      Script: {instanceID: 5612}
     - Class: 114
-      Script: {instanceID: 5824}
+      Script: {instanceID: 5712}
     - Class: 114
-      Script: {instanceID: 61748}
+      Script: {instanceID: 5820}
     - Class: 114
-      Script: {instanceID: 74058}
+      Script: {instanceID: 5830}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 119
@@ -501,6 +498,12 @@ ScriptsOnlyBuild:
     className: CinemachineBlenderSettings
   - hash:
       serializedVersion: 2
+      Hash: d7912c765efb61cb6ee4c7c78f120d21
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScoreManager
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -613,6 +616,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VehicleDamage
+  - hash:
+      serializedVersion: 2
+      Hash: 51aa7e05cf91e0fa5f6d9bcee4a9bcd3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RetryMenu
   - hash:
       serializedVersion: 2
       Hash: c8f1a224e0a43adc56c91864de822dd3
@@ -1441,20 +1450,8 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GunAim
-  - hash:
-      serializedVersion: 2
-      Hash: 51aa7e05cf91e0fa5f6d9bcee4a9bcd3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RetryMenu
-  - hash:
-      serializedVersion: 2
-      Hash: d7912c765efb61cb6ee4c7c78f120d21
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ScoreManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Touch.unity
-  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.1.apk
+  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.3.apk
