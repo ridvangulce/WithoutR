@@ -84,6 +84,7 @@ MonoBehaviour:
     waypointEvent:
       m_PersistentCalls:
         m_Calls: []
+  enemy: {fileID: 0}
 --- !u!1 &144646
 GameObject:
   m_ObjectHideFlags: 0

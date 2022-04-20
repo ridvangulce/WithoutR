@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,20 +25,31 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (gameIsPaused==true)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
         gameIsPaused = false;
         controlUI.SetActive(true);
         AudioListener.volume = 1f;
+
     }
 
     private void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         gameIsPaused = true;
         controlUI.SetActive(false);
         AudioListener.volume = 0f;

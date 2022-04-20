@@ -33,10 +33,6 @@ public class DestroyEnemy : MonoBehaviour
         {
             Destroy(collider.gameObject);
             isDestroy = true;
-            if (isDestroy == true)
-            {
-                StartCoroutine(ExplodeCoroutine());
-            }
 
             if (isDestroy == true && changePrefab)
             {
@@ -51,6 +47,7 @@ public class DestroyEnemy : MonoBehaviour
                 changePrefab = true;
                 isDestroy = false;
             }
+
             audioSource.Play();
             ScoreManager.scorValue += 100;
             waypointArrow.SetActive(false);
@@ -85,12 +82,6 @@ public class DestroyEnemy : MonoBehaviour
         audioSource.Stop();
     }
 
-    IEnumerator ExplodeCoroutine()
-    {
-        Instantiate(explosionEffect, transform.position, transform.rotation);
-        yield return new WaitForSeconds(3f);
-        Destroy(GameObject.FindWithTag("Effect"));
-    }
 
 
     // public void Spawn()

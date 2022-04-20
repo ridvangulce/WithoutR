@@ -35,6 +35,7 @@ public class AdController : MonoBehaviour
         if (this.interstitialAd.IsLoaded())
         {
             this.interstitialAd.Show();
+            Time.timeScale = 0f;
         }
 
         StartCoroutine(Wait());

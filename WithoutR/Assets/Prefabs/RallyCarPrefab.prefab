@@ -10949,9 +10949,8 @@ GameObject:
   - component: {fileID: 4851821917556241797}
   - component: {fileID: 4851821917559612007}
   - component: {fileID: 4851821917559706841}
-  - component: {fileID: 4851821916625753250}
   - component: {fileID: 6846992002146903564}
-  - component: {fileID: 5292235469197298281}
+  - component: {fileID: 4851821916625753250}
   m_Layer: 1
   m_Name: RallyCarPrefab
   m_TagString: Enemy
@@ -11110,6 +11109,19 @@ MonoBehaviour:
   optionalMeshList:
   - {fileID: 4851821917550013527}
   crashSound: {fileID: 4851821917554438353}
+--- !u!65 &6846992002146903564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4851821917553158863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5187123, y: 1.8193729, z: 5.950777}
+  m_Center: {x: -0.015285612, y: 1.1098992, z: 0.29356933}
 --- !u!114 &4851821916625753250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11126,33 +11138,6 @@ MonoBehaviour:
     type: 3}
   endOfPathInstruction: 0
   speed: 40
---- !u!65 &6846992002146903564
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851821917553158863}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5187123, y: 1.8193729, z: 5.950777}
-  m_Center: {x: -0.015285612, y: 1.1098992, z: 0.29356933}
---- !u!114 &5292235469197298281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851821917553158863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecc48107f72f46f1a908898fcc78612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
-    type: 3}
 --- !u!1 &4851821917553162829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12418,7 +12403,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 9025089908359617726, guid: 8275f5ff15d10416fb4e8f23a5627e7c,
+      objectReference: {fileID: 735208852164431707, guid: 24d486a000aaf44a58fb672bf2ed5ff9,
         type: 3}
     - target: {fileID: 13108806177404765, guid: ff1cce6674e514b9295cbe1e13728650,
         type: 3}
