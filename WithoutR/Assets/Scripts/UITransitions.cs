@@ -29,11 +29,6 @@ public class UITransitions : MonoBehaviour
         ScoreManager.scorValue = 0;
     }
 
-    private void Update()
-    {
-        Debug.Log(currentCamera.name);
-        Debug.Log(currentCamera.Priority);
-    }
 
     public void QuitGame()
     {

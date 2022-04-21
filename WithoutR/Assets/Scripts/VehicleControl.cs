@@ -663,7 +663,7 @@ public class VehicleControl : MonoBehaviour
 
                 slip = speed > 0.0f
                     ? (speed > 100
-                        ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(_steer), 0.02f)
+                        ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(_steer), 1f)
                         : slip = Mathf.Lerp(slip, 1.5f, 0.02f))
                     : slip = Mathf.Lerp(slip, 0.01f, 0.02f);
 
@@ -734,7 +734,7 @@ public class VehicleControl : MonoBehaviour
 
 
             w.rotation = Mathf.Repeat(w.rotation + Time.deltaTime * col.rpm * 360.0f / 60.0f, 360.0f);
-            w.rotation2 = Mathf.Lerp(w.rotation2, col.steerAngle, 0.1f);
+            w.rotation2 = Mathf.Lerp(w.rotation2, col.steerAngle, 10f);
             w.wheel.localRotation = Quaternion.Euler(w.rotation, w.rotation2, 0.0f);
 
 
@@ -896,7 +896,7 @@ public class VehicleControl : MonoBehaviour
 
             if (brake || slip2 > 2.0f)
             {
-                col.steerAngle = Mathf.Lerp(col.steerAngle, _steer * w.maxSteer, 0.02f);
+                col.steerAngle = Mathf.Lerp(col.steerAngle, _steer * w.maxSteer, 10f);
             }
             else
             {

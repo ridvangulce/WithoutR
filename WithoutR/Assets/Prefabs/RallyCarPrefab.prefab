@@ -11163,7 +11163,7 @@ MonoBehaviour:
   pathCreator: {fileID: 4670367202487303606, guid: da5520a6880c24f3990358e2174d9c12,
     type: 3}
   endOfPathInstruction: 0
-  speed: 30
+  speed: 25
 --- !u!1 &4851821917553162829
 GameObject:
   m_ObjectHideFlags: 0
@@ -12380,6 +12380,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 735208852164431707, guid: 24d486a000aaf44a58fb672bf2ed5ff9,
         type: 3}
+    - target: {fileID: 13108806177404764, guid: ff1cce6674e514b9295cbe1e13728650,
+        type: 3}
+      propertyPath: arrowTarget
+      value: 
+      objectReference: {fileID: 4851821917552847267}
+    - target: {fileID: 13108806177404764, guid: ff1cce6674e514b9295cbe1e13728650,
+        type: 3}
+      propertyPath: currentWaypoint
+      value: 
+      objectReference: {fileID: 4851821917552847267}
     - target: {fileID: 13108806177404765, guid: ff1cce6674e514b9295cbe1e13728650,
         type: 3}
       propertyPath: m_Name

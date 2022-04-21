@@ -43,6 +43,14 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -96,27 +104,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1684}
     - Class: 114
-      Script: {instanceID: 1758}
+      Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 2092}
+      Script: {instanceID: 1760}
     - Class: 114
-      Script: {instanceID: 2492}
+      Script: {instanceID: 2094}
     - Class: 114
-      Script: {instanceID: 2694}
+      Script: {instanceID: 2494}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2916}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 3006}
+      Script: {instanceID: 2918}
     - Class: 114
-      Script: {instanceID: 3090}
+      Script: {instanceID: 3008}
     - Class: 114
-      Script: {instanceID: 3144}
+      Script: {instanceID: 3092}
     - Class: 114
-      Script: {instanceID: 3184}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3346}
+      Script: {instanceID: 3186}
     - Class: 114
       Script: {instanceID: 3614}
     - Class: 114
@@ -176,6 +184,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -183,6 +193,10 @@ ScriptsOnlyBuild:
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -193,43 +207,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1684}
     - Class: 114
-      Script: {instanceID: 2026}
+      Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 2092}
+      Script: {instanceID: 2028}
     - Class: 114
-      Script: {instanceID: 2174}
+      Script: {instanceID: 2094}
     - Class: 114
-      Script: {instanceID: 2224}
+      Script: {instanceID: 2176}
     - Class: 114
-      Script: {instanceID: 2418}
+      Script: {instanceID: 2226}
     - Class: 114
-      Script: {instanceID: 2506}
+      Script: {instanceID: 2420}
     - Class: 114
-      Script: {instanceID: 2628}
+      Script: {instanceID: 2508}
     - Class: 114
-      Script: {instanceID: 2668}
+      Script: {instanceID: 2630}
     - Class: 114
-      Script: {instanceID: 2694}
+      Script: {instanceID: 2670}
     - Class: 114
-      Script: {instanceID: 2780}
+      Script: {instanceID: 2696}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2782}
     - Class: 114
-      Script: {instanceID: 2916}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 2956}
+      Script: {instanceID: 2918}
     - Class: 114
-      Script: {instanceID: 3004}
+      Script: {instanceID: 2958}
     - Class: 114
       Script: {instanceID: 3006}
     - Class: 114
-      Script: {instanceID: 3090}
+      Script: {instanceID: 3092}
     - Class: 114
-      Script: {instanceID: 3144}
-    - Class: 114
-      Script: {instanceID: 3184}
-    - Class: 114
-      Script: {instanceID: 3346}
+      Script: {instanceID: 3146}
     - Class: 114
       Script: {instanceID: 3450}
     - Class: 114
@@ -239,8 +249,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3980}
     - Class: 114
-      Script: {instanceID: 4470}
-    - Class: 114
       Script: {instanceID: 4514}
     - Class: 114
       Script: {instanceID: 4936}
@@ -248,8 +256,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5670}
     - Class: 114
       Script: {instanceID: 5866}
-    - Class: 114
-      Script: {instanceID: 6032}
     - Class: 114
       Script: {instanceID: 6078}
     - Class: 114
@@ -309,6 +315,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: 69415240821be7986b27e72bf9609a30
@@ -473,7 +485,7 @@ ScriptsOnlyBuild:
     className: UserControlThirdPerson
   - hash:
       serializedVersion: 2
-      Hash: afbba52f7b8f5b83065509b19598a100
+      Hash: 28e05377cb7988a23a2095151d1c58f4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DestroyEnemy
@@ -575,7 +587,7 @@ ScriptsOnlyBuild:
     className: RewardAdControl
   - hash:
       serializedVersion: 2
-      Hash: 08a89303e4e5a77e3bb0c5e4d3cc599a
+      Hash: b900ffe68db6740de8ca36a373194738
     assemblyName: Assembly-CSharp.dll
     namespaceName: TurnTheGameOn.ArrowWaypointer
     className: WaypointController
@@ -749,12 +761,6 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -785,7 +791,7 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
-      Hash: 02169c1594178521abbd6f12edee8249
+      Hash: e3a34916506bd91eae95963edb1c4e6f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Timer
@@ -1461,8 +1467,20 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextEventCheck
+  - hash:
+      serializedVersion: 2
+      Hash: f9a3fa795fdc45b44f33cc2a28c5a2ca
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SkyboxChanger
+  - hash:
+      serializedVersion: 2
+      Hash: 20240431c815058690a3ba9bdfb91802
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LookCamera
   platform: 13
   scenePathNames:
   - Assets/Scenes/Level 0.unity
   - Assets/Scenes/Level 1.unity
-  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.7.apk
+  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.9.apk

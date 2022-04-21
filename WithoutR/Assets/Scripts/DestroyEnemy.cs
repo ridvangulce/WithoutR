@@ -33,6 +33,8 @@ public class DestroyEnemy : MonoBehaviour
         {
             Destroy(collider.gameObject);
             isDestroy = true;
+            StartCoroutine(StartAnimator());
+            ScoreManager.scorValue += 100;
 
             if (isDestroy == true && changePrefab)
             {
@@ -50,8 +52,6 @@ public class DestroyEnemy : MonoBehaviour
             
             
             audioSource.Play();
-            StartCoroutine(StartAnimator());
-            ScoreManager.scorValue += 100;
             waypointArrow.SetActive(false);
             timer.gameObject.SetActive(false);
 
