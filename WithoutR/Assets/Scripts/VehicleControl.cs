@@ -2,12 +2,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public enum ControlMode
 {
-    simple = 1,
-    touch = 2
+    Simple = 1,
+    Touch = 2
 }
 
 
@@ -15,9 +16,9 @@ public class VehicleControl : MonoBehaviour
 {
     public PauseMenu pauseMenu;
 
-    public ControlMode controlMode = ControlMode.simple;
+    public ControlMode controlMode = ControlMode.Simple;
 
-    public bool activeControl = false;
+    public bool activeControl;
     
     
     private void Start()
@@ -28,7 +29,7 @@ public class VehicleControl : MonoBehaviour
 
     public CarWheels carWheels;
 
-    [System.Serializable]
+    [Serializable]
     public class CarWheels
     {
         public ConnectWheel wheels;
@@ -36,7 +37,7 @@ public class VehicleControl : MonoBehaviour
     }
 
 
-    [System.Serializable]
+    [Serializable]
     public class ConnectWheel
     {
         public bool frontWheelDrive = true;
@@ -48,12 +49,12 @@ public class VehicleControl : MonoBehaviour
         public Transform backLeft;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class WheelSetting
     {
-        public float Radius = 0.4f;
-        public float Weight = 1000.0f;
-        public float Distance = 0.2f;
+        [FormerlySerializedAs("Radius")] public float radius = 0.4f;
+        [FormerlySerializedAs("Weight")] public float weight = 1000.0f;
+        [FormerlySerializedAs("Distance")] public float distance = 0.2f;
     }
 
 
@@ -61,7 +62,7 @@ public class VehicleControl : MonoBehaviour
 
     public CarLights carLights;
 
-    [System.Serializable]
+    [Serializable]
     public class CarLights
     {
         public Light[] brakeLights;
@@ -72,10 +73,12 @@ public class VehicleControl : MonoBehaviour
 
     public CarSounds carSounds;
 
-    [System.Serializable]
+    [Serializable]
     public class CarSounds
     {
-        public AudioSource IdleEngine, LowEngine, HighEngine;
+        [FormerlySerializedAs("IdleEngine")] public AudioSource idleEngine;
+        [FormerlySerializedAs("LowEngine")] public AudioSource lowEngine;
+        [FormerlySerializedAs("HighEngine")] public AudioSource highEngine;
 
         public AudioSource nitro;
         public AudioSource switchGear;
@@ -85,22 +88,21 @@ public class VehicleControl : MonoBehaviour
 
     public CarParticles carParticles;
 
-    [System.Serializable]
+    [Serializable]
     public class CarParticles
     {
         public GameObject brakeParticlePerfab;
         public ParticleSystem shiftParticle1, shiftParticle2;
-        private GameObject[] wheelParticle = new GameObject[4];
     }
 
     // Car Engine Setting /////////////////////////////////
 
     public CarSetting carSetting;
 
-    [System.Serializable]
+    [Serializable]
     public class CarSetting
     {
-        public bool showNormalGizmos = false;
+        public bool showNormalGizmos;
         public Transform carSteer;
         public HitGround[] hitGround;
 
@@ -117,9 +119,9 @@ public class VehicleControl : MonoBehaviour
 
         public float maxSteerAngle = 25.0f;
 
-        public float shiftDownRPM = 1500.0f;
-        public float shiftUpRPM = 2500.0f;
-        public float idleRPM = 500.0f;
+        [FormerlySerializedAs("shiftDownRPM")] public float shiftDownRpm = 1500.0f;
+        [FormerlySerializedAs("shiftUpRPM")] public float shiftUpRpm = 2500.0f;
+        [FormerlySerializedAs("idleRPM")] public float idleRpm = 500.0f;
 
         public float stiffness = 2.0f;
 
@@ -128,16 +130,16 @@ public class VehicleControl : MonoBehaviour
         public float[] gears = {-10f, 9f, 6f, 4.5f, 3f, 2.5f};
 
 
-        public float LimitBackwardSpeed = 60.0f;
-        public float LimitForwardSpeed = 220.0f;
+        [FormerlySerializedAs("LimitBackwardSpeed")] public float limitBackwardSpeed = 60.0f;
+        [FormerlySerializedAs("LimitForwardSpeed")] public float limitForwardSpeed = 220.0f;
     }
 
 
-    [System.Serializable]
+    [Serializable]
     public class HitGround
     {
         public string tag = "street";
-        public bool grounded = false;
+        public bool grounded;
         public AudioClip brakeSound;
         public AudioClip groundSound;
         public Color brakeColor;
@@ -145,26 +147,26 @@ public class VehicleControl : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private float steer = 0;
-    private float accel = 0.0f;
+    private float _steer = 0;
+    [SerializeField] private float accel = 0.0f;
     [HideInInspector] public bool brake;
 
-    private bool shifmotor;
+    private bool _shiftmotor;
 
     [HideInInspector] public float curTorque = 100f;
     [HideInInspector] public float powerShift = 100;
     [HideInInspector] public bool shift;
 
 
-    [HideInInspector] public float speed = 0.0f;
+    [HideInInspector] public float speed;
 
-    private float lastSpeed = -10.0f;
-
-
-    private bool shifting = false;
+    private float _lastSpeed = -10.0f;
 
 
-    float[] efficiencyTable =
+    private bool _shifting = false;
+
+
+    [SerializeField] float[] efficiencyTable =
     {
         0.6f, 0.65f, 0.7f, 0.75f, 0.8f, 0.85f, 0.9f, 1.0f, 1.0f, 0.95f, 0.80f, 0.70f, 0.60f, 0.5f, 0.45f, 0.40f, 0.36f,
         0.33f, 0.30f, 0.20f, 0.10f, 0.05f
@@ -174,16 +176,16 @@ public class VehicleControl : MonoBehaviour
     float efficiencyTableStep = 250.0f;
 
 
-    private float Pitch;
-    private float PitchDelay;
+    private float _pitch;
+    [FormerlySerializedAs("PitchDelay")] [SerializeField] private float pitchDelay;
 
-    private float shiftTime = 0.0f;
+    [SerializeField] private float shiftTime;
 
-    private float shiftDelay = 0.0f;
+    private float _shiftDelay;
 
 
     [HideInInspector] public int currentGear = 0;
-    [HideInInspector] public bool NeutralGear = true;
+    [FormerlySerializedAs("NeutralGear")] [HideInInspector] public bool neutralGear = true;
 
     [HideInInspector] public float motorRPM = 0.0f;
 
@@ -238,7 +240,8 @@ public class VehicleControl : MonoBehaviour
         wheelCol.transform.parent = transform;
         wheelCol.transform.position = wheel.position;
         wheelCol.transform.eulerAngles = transform.eulerAngles;
-        pos_y = wheelCol.transform.localPosition.y;
+        var localPosition = wheelCol.transform.localPosition;
+        pos_y = localPosition.y;
 
         WheelCollider col = (WheelCollider) wheelCol.AddComponent(typeof(WheelCollider));
 
@@ -247,7 +250,7 @@ public class VehicleControl : MonoBehaviour
         result.drive = drive;
         result.pos_y = pos_y;
         result.maxSteer = maxSteer;
-        result.startPos = wheelCol.transform.localPosition;
+        result.startPos = localPosition;
 
         return result;
     }
@@ -259,7 +262,7 @@ public class VehicleControl : MonoBehaviour
     void Awake()
     {
 
-        if (carSetting.automaticGear) NeutralGear = false;
+        if (carSetting.automaticGear) neutralGear = false;
 
         myRigidbody = transform.GetComponent<Rigidbody>();
 
@@ -281,7 +284,7 @@ public class VehicleControl : MonoBehaviour
         foreach (WheelComponent w in wheels)
         {
             WheelCollider col = w.collider;
-            col.suspensionDistance = carWheels.setting.Distance;
+            col.suspensionDistance = carWheels.setting.distance;
             JointSpring js = col.suspensionSpring;
 
             js.spring = carSetting.springs;
@@ -289,9 +292,9 @@ public class VehicleControl : MonoBehaviour
             col.suspensionSpring = js;
 
 
-            col.radius = carWheels.setting.Radius;
+            col.radius = carWheels.setting.radius;
 
-            col.mass = carWheels.setting.Weight;
+            col.mass = carWheels.setting.weight;
 
 
             WheelFrictionCurve fc = col.forwardFriction;
@@ -314,7 +317,7 @@ public class VehicleControl : MonoBehaviour
     {
         float now = Time.timeSinceLevelLoad;
 
-        if (now < shiftDelay) return;
+        if (now < _shiftDelay) return;
 
         if (currentGear < carSetting.gears.Length - 1)
         {
@@ -326,14 +329,14 @@ public class VehicleControl : MonoBehaviour
             {
                 if (currentGear == 0)
                 {
-                    if (NeutralGear)
+                    if (neutralGear)
                     {
                         currentGear++;
-                        NeutralGear = false;
+                        neutralGear = false;
                     }
                     else
                     {
-                        NeutralGear = true;
+                        neutralGear = true;
                     }
                 }
                 else
@@ -347,7 +350,7 @@ public class VehicleControl : MonoBehaviour
             }
 
 
-            shiftDelay = now + 1.0f;
+            _shiftDelay = now + 1.0f;
             shiftTime = 1.5f;
         }
     }
@@ -357,9 +360,9 @@ public class VehicleControl : MonoBehaviour
     {
         float now = Time.timeSinceLevelLoad;
 
-        if (now < shiftDelay) return;
+        if (now < _shiftDelay) return;
 
-        if (currentGear > 0 || NeutralGear)
+        if (currentGear > 0 || neutralGear)
         {
             //w if (!carSounds.switchGear.isPlaying)
             carSounds.switchGear.GetComponent<AudioSource>().Play();
@@ -368,15 +371,15 @@ public class VehicleControl : MonoBehaviour
             {
                 if (currentGear == 1)
                 {
-                    if (!NeutralGear)
+                    if (!neutralGear)
                     {
                         currentGear--;
-                        NeutralGear = true;
+                        neutralGear = true;
                     }
                 }
                 else if (currentGear == 0)
                 {
-                    NeutralGear = false;
+                    neutralGear = false;
                 }
                 else
                 {
@@ -389,7 +392,7 @@ public class VehicleControl : MonoBehaviour
             }
 
 
-            shiftDelay = now + 0.1f;
+            _shiftDelay = now + 0.1f;
             shiftTime = 2.0f;
         }
     }
@@ -402,10 +405,14 @@ public class VehicleControl : MonoBehaviour
             collision.transform.root.GetComponent<VehicleControl>().slip2 =
                 Mathf.Clamp(collision.relativeVelocity.magnitude, 0.0f, 10.0f);
 
-            myRigidbody.angularVelocity = new Vector3(-myRigidbody.angularVelocity.x * 0.5f,
-                myRigidbody.angularVelocity.y * 0.5f, -myRigidbody.angularVelocity.z * 0.5f);
-            myRigidbody.velocity =
-                new Vector3(myRigidbody.velocity.x, myRigidbody.velocity.y * 0.5f, myRigidbody.velocity.z);
+            var angularVelocity = myRigidbody.angularVelocity;
+            angularVelocity = new Vector3(-angularVelocity.x * 0.5f,
+                angularVelocity.y * 0.5f, -angularVelocity.z * 0.5f);
+            myRigidbody.angularVelocity = angularVelocity;
+            var velocity = myRigidbody.velocity;
+            velocity =
+                new Vector3(velocity.x, velocity.y * 0.5f, velocity.z);
+            myRigidbody.velocity = velocity;
         }
     }
 
@@ -441,12 +448,12 @@ public class VehicleControl : MonoBehaviour
         speed = myRigidbody.velocity.magnitude * 2.7f;
 
 
-        if (speed < lastSpeed - 10 && slip < 10)
+        if (speed < _lastSpeed - 10 && slip < 10)
         {
-            slip = lastSpeed / 15;
+            slip = _lastSpeed / 15;
         }
 
-        lastSpeed = speed;
+        _lastSpeed = speed;
 
 
         if (slip2 != 0.0f)
@@ -458,7 +465,7 @@ public class VehicleControl : MonoBehaviour
 
         if (activeControl)
         {
-            if (controlMode == ControlMode.simple)
+            if (controlMode == ControlMode.Simple)
             {
                 accel = 0;
                 brake = false;
@@ -466,13 +473,13 @@ public class VehicleControl : MonoBehaviour
 
                 if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
                 {
-                    steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
+                    _steer = Mathf.MoveTowards(_steer, Input.GetAxis("Horizontal"), 0.2f);
                     accel = Input.GetAxis("Vertical");
                     brake = Input.GetButton("Jump");
                     shift = Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift);
                 }
             }
-            else if (controlMode == ControlMode.touch)
+            else if (controlMode == ControlMode.Touch)
             {
                 if (accelFwd != 0)
                 {
@@ -483,13 +490,13 @@ public class VehicleControl : MonoBehaviour
                     accel = accelBack;
                 }
 
-                steer = Mathf.MoveTowards(steer, steerAmount, 0.07f);
+                _steer = Mathf.MoveTowards(_steer, steerAmount, 0.07f);
             }
         }
         else
         {
             accel = 0.0f;
-            steer = 0.0f;
+            _steer = 0.0f;
             brake = false;
             shift = false;
         }
@@ -501,7 +508,7 @@ public class VehicleControl : MonoBehaviour
 
         if (carSetting.carSteer)
             carSetting.carSteer.localEulerAngles =
-                new Vector3(steerCurAngle.x, steerCurAngle.y, steerCurAngle.z + (steer * -120.0f));
+                new Vector3(steerCurAngle.x, steerCurAngle.y, steerCurAngle.z + (_steer * -120.0f));
 
 
         if (carSetting.automaticGear && (currentGear == 1) && (accel < 0.0f))
@@ -514,12 +521,12 @@ public class VehicleControl : MonoBehaviour
             if (speed < 5.0f)
                 ShiftUp();
         }
-        else if (carSetting.automaticGear && (motorRPM > carSetting.shiftUpRPM) && (accel > 0.0f) && speed > 10.0f &&
+        else if (carSetting.automaticGear && (motorRPM > carSetting.shiftUpRpm) && (accel > 0.0f) && speed > 10.0f &&
                  !brake)
         {
             ShiftUp();
         }
-        else if (carSetting.automaticGear && (motorRPM < carSetting.shiftDownRPM) && (currentGear > 1))
+        else if (carSetting.automaticGear && (motorRPM < carSetting.shiftDownRpm) && (currentGear > 1))
         {
             ShiftDown();
         }
@@ -564,18 +571,18 @@ public class VehicleControl : MonoBehaviour
 
         // Reverse Lights
 
-        foreach (Light WLight in carLights.reverseLights)
+        foreach (Light wLight in carLights.reverseLights)
         {
             if (speed > 2.0f && currentGear == 0)
             {
-                WLight.intensity = Mathf.MoveTowards(WLight.intensity, 8, 0.5f);
+                wLight.intensity = Mathf.MoveTowards(wLight.intensity, 8, 0.5f);
             }
             else
             {
-                WLight.intensity = Mathf.MoveTowards(WLight.intensity, 0, 0.5f);
+                wLight.intensity = Mathf.MoveTowards(wLight.intensity, 0, 0.5f);
             }
 
-            WLight.enabled = WLight.intensity == 0 ? false : true;
+            wLight.enabled = wLight.intensity == 0 ? false : true;
         }
 
 
@@ -594,9 +601,9 @@ public class VehicleControl : MonoBehaviour
 
             if (w.drive)
             {
-                if (!NeutralGear && brake && currentGear < 2)
+                if (!neutralGear && brake && currentGear < 2)
                 {
-                    rpm += accel * carSetting.idleRPM;
+                    rpm += accel * carSetting.idleRpm;
 
                     /*
                     if (rpm > 1)
@@ -611,13 +618,13 @@ public class VehicleControl : MonoBehaviour
                 }
                 else
                 {
-                    if (!NeutralGear)
+                    if (!neutralGear)
                     {
                         rpm += col.rpm;
                     }
                     else
                     {
-                        rpm += (carSetting.idleRPM * accel);
+                        rpm += (carSetting.idleRpm * accel);
                     }
                 }
 
@@ -651,12 +658,12 @@ public class VehicleControl : MonoBehaviour
             }
             else
             {
-                col.brakeTorque = accel == 0 || NeutralGear ? col.brakeTorque = 1000 : col.brakeTorque = 0;
+                col.brakeTorque = accel == 0 || neutralGear ? col.brakeTorque = 1000 : col.brakeTorque = 0;
 
 
                 slip = speed > 0.0f
                     ? (speed > 100
-                        ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(steer), 0.02f)
+                        ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(_steer), 0.02f)
                         : slip = Mathf.Lerp(slip, 1.5f, 0.02f))
                     : slip = Mathf.Lerp(slip, 0.01f, 0.02f);
 
@@ -677,16 +684,16 @@ public class VehicleControl : MonoBehaviour
             fc.stiffness = carSetting.stiffness / (slip + slip2);
 
 
-            fc.extremumSlip = 0.2f + Mathf.Abs(steer);
+            fc.extremumSlip = 0.2f + Mathf.Abs(_steer);
 
             col.sidewaysFriction = fc;
 
 
-            if (shift && (currentGear > 1 && speed > 50.0f) && shifmotor && Mathf.Abs(steer) < 0.2f)
+            if (shift && (currentGear > 1 && speed > 50.0f) && _shiftmotor && Mathf.Abs(_steer) < 0.2f)
             {
                 if (powerShift == 0)
                 {
-                    shifmotor = false;
+                    _shiftmotor = false;
                 }
 
                 powerShift = Mathf.MoveTowards(powerShift, 0.0f, Time.deltaTime * 10.0f);
@@ -709,7 +716,7 @@ public class VehicleControl : MonoBehaviour
             {
                 if (powerShift > 20)
                 {
-                    shifmotor = true;
+                    _shiftmotor = true;
                 }
 
                 carSounds.nitro.volume = Mathf.MoveTowards(carSounds.nitro.volume, 0.0f, Time.deltaTime * 2.0f);
@@ -825,7 +832,7 @@ public class VehicleControl : MonoBehaviour
                 }
 
 
-                lp.y = w.startPos.y - carWheels.setting.Distance;
+                lp.y = w.startPos.y - carWheels.setting.distance;
 
                 myRigidbody.AddForce(Vector3.down * 5000);
             }
@@ -866,10 +873,10 @@ public class VehicleControl : MonoBehaviour
                     // 
                     float curTorqueCol = col.motorTorque;
 
-                    if (!brake && accel != 0 && NeutralGear == false)
+                    if (!brake && accel != 0 && neutralGear == false)
                     {
-                        if ((speed < carSetting.LimitForwardSpeed && currentGear > 0) ||
-                            (speed < carSetting.LimitBackwardSpeed && currentGear == 0))
+                        if ((speed < carSetting.limitForwardSpeed && currentGear > 0) ||
+                            (speed < carSetting.limitBackwardSpeed && currentGear == 0))
                         {
                             col.motorTorque = curTorqueCol * 0.9f + newTorque * 1.0f;
                         }
@@ -889,49 +896,49 @@ public class VehicleControl : MonoBehaviour
 
             if (brake || slip2 > 2.0f)
             {
-                col.steerAngle = Mathf.Lerp(col.steerAngle, steer * w.maxSteer, 0.02f);
+                col.steerAngle = Mathf.Lerp(col.steerAngle, _steer * w.maxSteer, 0.02f);
             }
             else
             {
                 float SteerAngle = Mathf.Clamp(speed / carSetting.maxSteerAngle, 1.0f, carSetting.maxSteerAngle);
-                col.steerAngle = steer * (w.maxSteer / SteerAngle);
+                col.steerAngle = _steer * (w.maxSteer / SteerAngle);
             }
         }
 
 
         // calculate pitch (keep it within reasonable bounds)
-        Pitch = Mathf.Clamp(1.2f + ((motorRPM - carSetting.idleRPM) / (carSetting.shiftUpRPM - carSetting.idleRPM)),
+        _pitch = Mathf.Clamp(1.2f + ((motorRPM - carSetting.idleRpm) / (carSetting.shiftUpRpm - carSetting.idleRpm)),
             1.0f, 10.0f);
 
         shiftTime = Mathf.MoveTowards(shiftTime, 0.0f, 0.1f);
 
-        if (Pitch == 1)
+        if (_pitch == 1)
         {
-            carSounds.IdleEngine.volume = Mathf.Lerp(carSounds.IdleEngine.volume, 1.0f, 0.1f);
-            carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.5f, 0.1f);
-            carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 0.0f, 0.1f);
+            carSounds.idleEngine.volume = Mathf.Lerp(carSounds.idleEngine.volume, 1.0f, 0.1f);
+            carSounds.lowEngine.volume = Mathf.Lerp(carSounds.lowEngine.volume, 0.5f, 0.1f);
+            carSounds.highEngine.volume = Mathf.Lerp(carSounds.highEngine.volume, 0.0f, 0.1f);
         }
         else
         {
-            carSounds.IdleEngine.volume = Mathf.Lerp(carSounds.IdleEngine.volume, 1.8f - Pitch, 0.1f);
+            carSounds.idleEngine.volume = Mathf.Lerp(carSounds.idleEngine.volume, 1.8f - _pitch, 0.1f);
 
 
-            if ((Pitch > PitchDelay || accel > 0) && shiftTime == 0.0f)
+            if ((_pitch > pitchDelay || accel > 0) && shiftTime == 0.0f)
             {
-                carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.0f, 0.2f);
-                carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 1.0f, 0.1f);
+                carSounds.lowEngine.volume = Mathf.Lerp(carSounds.lowEngine.volume, 0.0f, 0.2f);
+                carSounds.highEngine.volume = Mathf.Lerp(carSounds.highEngine.volume, 1.0f, 0.1f);
             }
             else
             {
-                carSounds.LowEngine.volume = Mathf.Lerp(carSounds.LowEngine.volume, 0.5f, 0.1f);
-                carSounds.HighEngine.volume = Mathf.Lerp(carSounds.HighEngine.volume, 0.0f, 0.2f);
+                carSounds.lowEngine.volume = Mathf.Lerp(carSounds.lowEngine.volume, 0.5f, 0.1f);
+                carSounds.highEngine.volume = Mathf.Lerp(carSounds.highEngine.volume, 0.0f, 0.2f);
             }
 
 
-            carSounds.HighEngine.pitch = Pitch;
-            carSounds.LowEngine.pitch = Pitch;
+            carSounds.highEngine.pitch = _pitch;
+            carSounds.lowEngine.pitch = _pitch;
 
-            PitchDelay = Pitch;
+            pitchDelay = _pitch;
         }
     }
 

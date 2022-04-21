@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using GoogleMobileAds.Api;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public float _time = 120f;
-    public Text text;
+    public TextMeshProUGUI text;
     public GameObject retryCanvas;
     public GameObject controlCanvas;
+    public Animator animator;
+    private static readonly int Time1 = Animator.StringToHash("time");
 
     // Update is called once per frame
     private void Start()
@@ -24,23 +27,31 @@ public class Timer : MonoBehaviour
         if (_time > 0)
         {
             _time -= Time.deltaTime;
+            if (_time < 10f)
+            {
+                animator.SetBool("time", true);
+            }
         }
-        else if (RewardAdControl.Current.isReward==true)
-        {
-            _time = 120f;
-            retryCanvas.SetActive(false);
-            controlCanvas.SetActive(true);
-            Time.timeScale = 1f;
-            AudioListener.volume = 1f;
-            RewardAdControl.Current.isReward = false;
-        }
+
+
         else
         {
+            PauseMenu.Current.gameIsPaused = true;
             retryCanvas.SetActive(true);
             controlCanvas.SetActive(false);
-            Time.timeScale = 0f;
             AudioListener.volume = 0f;
+            if (RewardAdControl.Current.isReward == true)
+            {
+                PauseMenu.Current.gameIsPaused = false;
+                _time = 120f;
+                retryCanvas.SetActive(false);
+                controlCanvas.SetActive(true);
+                Time.timeScale = 1f;
+                AudioListener.volume = 1f;
+                RewardAdControl.Current.isReward = false;
+            }
         }
+
         DisplayTime(_time);
     }
 

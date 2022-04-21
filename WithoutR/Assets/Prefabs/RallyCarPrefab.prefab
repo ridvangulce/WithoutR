@@ -11017,9 +11017,9 @@ MonoBehaviour:
       backRight: {fileID: 4851821917552882837}
       backLeft: {fileID: 4851821917552854343}
     setting:
-      Radius: 0.45
-      Weight: 1000
-      Distance: 0.2
+      radius: 0.45
+      weight: 1000
+      distance: 0.2
   carLights:
     brakeLights:
     - {fileID: 4851821917559232717}
@@ -11028,9 +11028,9 @@ MonoBehaviour:
     - {fileID: 4851821917559224253}
     - {fileID: 4851821917559222323}
   carSounds:
-    IdleEngine: {fileID: 4851821917554424285}
-    LowEngine: {fileID: 4851821917554538117}
-    HighEngine: {fileID: 4851821917554497593}
+    idleEngine: {fileID: 4851821917554424285}
+    lowEngine: {fileID: 4851821917554538117}
+    highEngine: {fileID: 4851821917554497593}
     nitro: {fileID: 4851821917554411593}
     switchGear: {fileID: 4851821917554425743}
   carParticles:
@@ -11063,9 +11063,9 @@ MonoBehaviour:
     brakePower: 12000
     shiftCentre: {x: 0, y: -0.05, z: 0}
     maxSteerAngle: 30
-    shiftDownRPM: 2000
-    shiftUpRPM: 4000
-    idleRPM: 700
+    shiftDownRpm: 2000
+    shiftUpRpm: 4000
+    idleRpm: 700
     stiffness: 3
     automaticGear: 1
     gears:
@@ -11075,15 +11075,41 @@ MonoBehaviour:
     - 3
     - 2
     - 1
-    LimitBackwardSpeed: 60
-    LimitForwardSpeed: 220
+    limitBackwardSpeed: 60
+    limitForwardSpeed: 220
+  accel: 0
   brake: 0
   curTorque: 100
   powerShift: 100
   shift: 0
   speed: 0
+  efficiencyTable:
+  - 0.6
+  - 0.65
+  - 0.7
+  - 0.75
+  - 0.8
+  - 0.85
+  - 0.9
+  - 1
+  - 1
+  - 0.95
+  - 0.8
+  - 0.7
+  - 0.6
+  - 0.5
+  - 0.45
+  - 0.4
+  - 0.36
+  - 0.33
+  - 0.3
+  - 0.2
+  - 0.1
+  - 0.05
+  pitchDelay: 0
+  shiftTime: 0
   currentGear: 0
-  NeutralGear: 1
+  neutralGear: 1
   motorRPM: 0
   Backward: 0
   accelFwd: 0
@@ -11137,7 +11163,7 @@ MonoBehaviour:
   pathCreator: {fileID: 4670367202487303606, guid: da5520a6880c24f3990358e2174d9c12,
     type: 3}
   endOfPathInstruction: 0
-  speed: 40
+  speed: 30
 --- !u!1 &4851821917553162829
 GameObject:
   m_ObjectHideFlags: 0
@@ -11296,56 +11322,6 @@ Transform:
   m_Father: {fileID: 4851821917552874563}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4851821917553200561
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4851821917552854319}
-  - component: {fileID: 4851821917558097109}
-  m_Layer: 1
-  m_Name: Shadow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4851821917552854319
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851821917553200561}
-  m_LocalRotation: {x: 0.7071068, y: -0.00000005960466, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.029447991, y: 3.57, z: 0.2999873}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4851821917552872855}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!119 &4851821917558097109
-Projector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4851821917553200561}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_NearClipPlane: 2.5
-  m_FarClipPlane: 10
-  m_FieldOfView: 80
-  m_AspectRatio: 0.8
-  m_Orthographic: 0
-  m_OrthographicSize: 2
-  m_Material: {fileID: 2100000, guid: 78c0a732ad112a541100162a44295342, type: 2}
-  m_IgnoreLayers:
-    serializedVersion: 2
-    m_Bits: 2
 --- !u!1 &4851821917553201103
 GameObject:
   m_ObjectHideFlags: 0
@@ -11415,7 +11391,6 @@ Transform:
   - {fileID: 4851821917552862775}
   - {fileID: 4851821917552793563}
   - {fileID: 4851821917552869851}
-  - {fileID: 4851821917552854319}
   m_Father: {fileID: 4851821917552847267}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -12,7 +12,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject controlUI;
 
+    public static PauseMenu Current;
     // Update is called once per frame
+    private void Start()
+    {
+        Current = this;
+    }
+
     public void PauseGame()
     {
         if (gameIsPaused)

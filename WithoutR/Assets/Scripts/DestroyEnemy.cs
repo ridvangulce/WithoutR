@@ -10,18 +10,18 @@ using UnityEngine.UI;
 
 public class DestroyEnemy : MonoBehaviour
 {
-    private Coroutine _coroutine;
     public GameObject oldCar;
     public GameObject rallyCar;
     [HideInInspector] public bool isDestroy;
     [HideInInspector] public bool changePrefab;
     public Timer timer;
-    public GameObject explosionEffect;
     public GameObject waypointArrow;
     public AudioSource audioSource;
+    public Animator animator;
 
     private void Start()
     {
+        audioSource.Stop();
         StartCoroutine(SpawnCoroutineOldCar());
         waypointArrow.SetActive(false);
     }
@@ -47,11 +47,14 @@ public class DestroyEnemy : MonoBehaviour
                 changePrefab = true;
                 isDestroy = false;
             }
-
+            
+            
             audioSource.Play();
+            StartCoroutine(StartAnimator());
             ScoreManager.scorValue += 100;
             waypointArrow.SetActive(false);
             timer.gameObject.SetActive(false);
+
         }
     }
 
@@ -67,6 +70,14 @@ public class DestroyEnemy : MonoBehaviour
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
         audioSource.Stop();
+    }
+
+    IEnumerator StartAnimator()
+    {
+        animator.SetBool("isDestroy",true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("isDestroy",false);
+
     }
 
     IEnumerator SpawnCoroutineRallyCar()

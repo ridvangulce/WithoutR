@@ -16,7 +16,7 @@ public class RetryMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Application.LoadLevel(Application.loadedLevel);
         ScoreManager.scorValue = 0;
     }
 

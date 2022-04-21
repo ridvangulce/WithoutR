@@ -214,9 +214,9 @@ MonoBehaviour:
       backRight: {fileID: 1824478981678089390}
       backLeft: {fileID: 1824478981678043386}
     setting:
-      Radius: 0.45
-      Weight: 1000
-      Distance: 0.2
+      radius: 0.45
+      weight: 1000
+      distance: 0.2
   carLights:
     brakeLights:
     - {fileID: 1824478981688589338}
@@ -227,9 +227,9 @@ MonoBehaviour:
     - {fileID: 1824478981688588602}
     - {fileID: 1824478981688509976}
   carSounds:
-    IdleEngine: {fileID: 0}
-    LowEngine: {fileID: 0}
-    HighEngine: {fileID: 0}
+    idleEngine: {fileID: 0}
+    lowEngine: {fileID: 0}
+    highEngine: {fileID: 0}
     nitro: {fileID: 0}
     switchGear: {fileID: 0}
   carParticles:
@@ -262,9 +262,9 @@ MonoBehaviour:
     brakePower: 12000
     shiftCentre: {x: 0, y: -0.05, z: 0}
     maxSteerAngle: 30
-    shiftDownRPM: 2000
-    shiftUpRPM: 4000
-    idleRPM: 700
+    shiftDownRpm: 2000
+    shiftUpRpm: 4000
+    idleRpm: 700
     stiffness: 3
     automaticGear: 1
     gears:
@@ -274,15 +274,41 @@ MonoBehaviour:
     - 3
     - 2
     - 1
-    LimitBackwardSpeed: 60
-    LimitForwardSpeed: 220
+    limitBackwardSpeed: 60
+    limitForwardSpeed: 220
+  accel: 0
   brake: 0
   curTorque: 100
   powerShift: 100
   shift: 0
   speed: 0
+  efficiencyTable:
+  - 0.6
+  - 0.65
+  - 0.7
+  - 0.75
+  - 0.8
+  - 0.85
+  - 0.9
+  - 1
+  - 1
+  - 0.95
+  - 0.8
+  - 0.7
+  - 0.6
+  - 0.5
+  - 0.45
+  - 0.4
+  - 0.36
+  - 0.33
+  - 0.3
+  - 0.2
+  - 0.1
+  - 0.05
+  pitchDelay: 0
+  shiftTime: 0
   currentGear: 0
-  NeutralGear: 1
+  neutralGear: 1
   motorRPM: 0
   Backward: 0
   accelFwd: 0
@@ -336,7 +362,7 @@ MonoBehaviour:
   pathCreator: {fileID: 9011523916143404921, guid: d2bc95b1136154fdab2b5c2e0ec7ea6e,
     type: 3}
   endOfPathInstruction: 0
-  speed: 40
+  speed: 30
 --- !u!1 &1824478981677720694
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,56 +569,6 @@ Transform:
   m_Father: {fileID: 1824478981678077302}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1824478981677736122
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1824478981678048882}
-  - component: {fileID: 1824478981687512328}
-  m_Layer: 1
-  m_Name: Shadow
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1824478981678048882
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824478981677736122}
-  m_LocalRotation: {x: 0.7071068, y: -0.00000005960466, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.01, y: 3.57, z: -0.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1824478981678039578}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!119 &1824478981687512328
-Projector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824478981677736122}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_NearClipPlane: 2.5
-  m_FarClipPlane: 10
-  m_FieldOfView: 95
-  m_AspectRatio: 0.6
-  m_Orthographic: 0
-  m_OrthographicSize: 2
-  m_Material: {fileID: 2100000, guid: 78c0a732ad112a541100162a44295342, type: 2}
-  m_IgnoreLayers:
-    serializedVersion: 2
-    m_Bits: 2
 --- !u!1 &1824478981677782686
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +862,6 @@ Transform:
   - {fileID: 1824478981678059622}
   - {fileID: 1824478981678076494}
   - {fileID: 1824478981678156830}
-  - {fileID: 1824478981678048882}
   m_Father: {fileID: 1824478981678077302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2628,6 +2603,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 735208852164431707, guid: 24d486a000aaf44a58fb672bf2ed5ff9,
         type: 3}
+    - target: {fileID: 13108806177404764, guid: ff1cce6674e514b9295cbe1e13728650,
+        type: 3}
+      propertyPath: arrowTarget
+      value: 
+      objectReference: {fileID: 1824478981678077302}
+    - target: {fileID: 13108806177404764, guid: ff1cce6674e514b9295cbe1e13728650,
+        type: 3}
+      propertyPath: currentWaypoint
+      value: 
+      objectReference: {fileID: 1824478981678077302}
     - target: {fileID: 13108806177404765, guid: ff1cce6674e514b9295cbe1e13728650,
         type: 3}
       propertyPath: m_Name

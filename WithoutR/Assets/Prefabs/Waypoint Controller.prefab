@@ -171,3 +171,4 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   enemy: {fileID: 4851821917553158863, guid: 7533aaa8f61b543e3b3ba228198d1b80, type: 3}
+  distanceText: {fileID: 0}

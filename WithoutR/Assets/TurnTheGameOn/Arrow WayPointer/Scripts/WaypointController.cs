@@ -1,4 +1,6 @@
-﻿namespace TurnTheGameOn.ArrowWaypointer
+﻿using TMPro;
+
+namespace TurnTheGameOn.ArrowWaypointer
 {
     using UnityEngine;
     using UnityEngine.Events;
@@ -20,7 +22,7 @@
             public UnityEvent waypointEvent;
         }
 
-
+        private float _distance;
         public Transform player;
         public Switch configureMode;
 
@@ -32,13 +34,17 @@
         private GameObject newWaypoint;
         private string newWaypointName;
         private int nextWP;
+
         private Transform waypointArrow; //Transform used to reference the Waypoint Arrow
-        private Transform currentWaypoint; //Transforms used to identify the Waypoint Arrow's target
-        private Transform arrowTarget;
+        [HideInInspector] public Transform currentWaypoint; //Transforms used to identify the Waypoint Arrow's target
+        [HideInInspector] public Transform arrowTarget;
         public GameObject enemy;
+        public static WaypointController Current;
 
         void Start()
         {
+            Current = this;
+
             // if (Application.isPlaying)
             // {
             //     GameObject newObject = new GameObject();
