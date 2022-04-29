@@ -1739,6 +1739,7 @@ GameObject:
   - component: {fileID: 9025089908348661536}
   - component: {fileID: 9025089908348612524}
   - component: {fileID: 9025089906988606307}
+  - component: {fileID: 2366137079479613983}
   m_Layer: 0
   m_Name: PoliceCarPrefab
   m_TagString: Police
@@ -1795,17 +1796,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00030e199cdd9934dbd15380a1bcabab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
   controlMode: 2
   activeControl: 1
-  _isTurnRight: 0
-  _isTurnLeft: 0
-  _isBrake: 0
-  _isAccel: 0
-  _stopBrake: 0
-  _stopTurn: 0
-  _stopAccel: 0
-  _isHandbrake: 0
-  _stopHandbrake: 0
   carWheels:
     wheels:
       frontWheelDrive: 1
@@ -1815,9 +1808,9 @@ MonoBehaviour:
       backRight: {fileID: 9025089908359619268}
       backLeft: {fileID: 9025089908359598986}
     setting:
-      Radius: 0.49
-      Weight: 1000
-      Distance: 0.2
+      radius: 0.49
+      weight: 1000
+      distance: 0.2
   carLights:
     brakeLights:
     - {fileID: 9025089908349325072}
@@ -1826,9 +1819,9 @@ MonoBehaviour:
     - {fileID: 9025089908349309254}
     - {fileID: 9025089908349227200}
   carSounds:
-    IdleEngine: {fileID: 9025089908360118442}
-    LowEngine: {fileID: 9025089908360130308}
-    HighEngine: {fileID: 9025089908360137236}
+    idleEngine: {fileID: 9025089908360118442}
+    lowEngine: {fileID: 9025089908360130308}
+    highEngine: {fileID: 9025089908360137236}
     nitro: {fileID: 9025089908360304380}
     switchGear: {fileID: 9025089908360146496}
   carParticles:
@@ -1860,9 +1853,9 @@ MonoBehaviour:
     brakePower: 12000
     shiftCentre: {x: 0, y: -0.05, z: 0}
     maxSteerAngle: 30
-    shiftDownRPM: 2000
-    shiftUpRPM: 4000
-    idleRPM: 700
+    shiftDownRpm: 2000
+    shiftUpRpm: 4000
+    idleRpm: 700
     stiffness: 3
     automaticGear: 1
     gears:
@@ -1872,15 +1865,41 @@ MonoBehaviour:
     - 3
     - 2
     - 1
-    LimitBackwardSpeed: 60
-    LimitForwardSpeed: 220
+    limitBackwardSpeed: 60
+    limitForwardSpeed: 220
+  accel: 0
   brake: 0
   curTorque: 100
   powerShift: 100
   shift: 0
   speed: 0
+  efficiencyTable:
+  - 0.6
+  - 0.65
+  - 0.7
+  - 0.75
+  - 0.8
+  - 0.85
+  - 0.9
+  - 1
+  - 1
+  - 0.95
+  - 0.8
+  - 0.7
+  - 0.6
+  - 0.5
+  - 0.45
+  - 0.4
+  - 0.36
+  - 0.33
+  - 0.3
+  - 0.2
+  - 0.1
+  - 0.05
+  pitchDelay: 0
+  shiftTime: 0
   currentGear: 0
-  NeutralGear: 1
+  neutralGear: 1
   motorRPM: 0
   Backward: 0
   accelFwd: 0
@@ -1944,6 +1963,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.8647926, y: 1.4907353, z: 6.4962254}
   m_Center: {x: -0.049068097, y: 0.93239653, z: 0.073604584}
+--- !u!114 &2366137079479613983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025089908359501794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951a7bbde79894a16af00d1b54552d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldCar: {fileID: 1824478981677719594, guid: 87516f9dc23db4bd6b5079a2ca5d9d57, type: 3}
+  rallyCar: {fileID: 4851821917553158863, guid: 7533aaa8f61b543e3b3ba228198d1b80,
+    type: 3}
+  isDestroy: 0
+  changePrefab: 0
+  timer: {fileID: 0}
+  waypointArrow: {fileID: 0}
+  audioSource: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &9025089908359502794
 GameObject:
   m_ObjectHideFlags: 0

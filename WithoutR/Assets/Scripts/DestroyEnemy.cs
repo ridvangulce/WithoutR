@@ -34,7 +34,7 @@ public class DestroyEnemy : MonoBehaviour
             Destroy(collider.gameObject);
             isDestroy = true;
             StartCoroutine(StartAnimator());
-            ScoreManager.scorValue += 100;
+            ScoreManager.scorValue += 5;
 
             if (isDestroy == true && changePrefab)
             {
@@ -66,19 +66,12 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(oldCar, oldCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
-        timer._time = 120f;
+        timer._time = 90f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
         audioSource.Stop();
     }
 
-    IEnumerator StartAnimator()
-    {
-        animator.SetBool("isDestroy",true);
-        yield return new WaitForSeconds(2f);
-        animator.SetBool("isDestroy",false);
-
-    }
 
     IEnumerator SpawnCoroutineRallyCar()
     {
@@ -87,10 +80,17 @@ public class DestroyEnemy : MonoBehaviour
         Instantiate(rallyCar, rallyCar.transform.position, Quaternion.identity);
         Debug.Log("Spawned");
         isDestroy = false;
-        timer._time = 120f;
+        timer._time = 90f;
         timer.gameObject.SetActive(true);
         waypointArrow.SetActive(true);
         audioSource.Stop();
+    }
+    IEnumerator StartAnimator()
+    {
+        animator.SetBool("isDestroy",true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("isDestroy",false);
+
     }
 
 

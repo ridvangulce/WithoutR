@@ -5,28 +5,37 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 public class UITransitions : MonoBehaviour
 {
-    public CinemachineVirtualCamera currentCamera;
+    public Slider progressBar;
+    private int _level;
+    public GameObject menuCanvas;
+    public GameObject loadingCanvas;
 
-
-    private void Start()
+    private void Awake()
     {
-        currentCamera.Priority++;
+        _level = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
-    public void UpdateCamera(CinemachineVirtualCamera target)
-    {
-        currentCamera.Priority--;
-        currentCamera = target;
-        currentCamera.Priority++;
-    }
 
-    public void StartGame(CinemachineVirtualCamera target)
+    public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        menuCanvas.SetActive(false);
+        loadingCanvas.SetActive(true);
+        StartCoroutine(StartLoad(_level));
         ScoreManager.scorValue = 0;
+    }
+
+    IEnumerator StartLoad(int level)
+    {
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(level);
+        while (!asyncOperation.isDone)
+        {
+            progressBar.value = asyncOperation.progress;
+            yield return null;
+        }
     }
 
 

@@ -19,8 +19,8 @@ public class VehicleControl : MonoBehaviour
     public ControlMode controlMode = ControlMode.Simple;
 
     public bool activeControl;
-    
-    
+
+
     private void Start()
     {
         pauseMenu.Resume();
@@ -130,8 +130,11 @@ public class VehicleControl : MonoBehaviour
         public float[] gears = {-10f, 9f, 6f, 4.5f, 3f, 2.5f};
 
 
-        [FormerlySerializedAs("LimitBackwardSpeed")] public float limitBackwardSpeed = 60.0f;
-        [FormerlySerializedAs("LimitForwardSpeed")] public float limitForwardSpeed = 220.0f;
+        [FormerlySerializedAs("LimitBackwardSpeed")]
+        public float limitBackwardSpeed = 60.0f;
+
+        [FormerlySerializedAs("LimitForwardSpeed")]
+        public float limitForwardSpeed = 220.0f;
     }
 
 
@@ -177,7 +180,9 @@ public class VehicleControl : MonoBehaviour
 
 
     private float _pitch;
-    [FormerlySerializedAs("PitchDelay")] [SerializeField] private float pitchDelay;
+
+    [FormerlySerializedAs("PitchDelay")] [SerializeField]
+    private float pitchDelay;
 
     [SerializeField] private float shiftTime;
 
@@ -185,7 +190,9 @@ public class VehicleControl : MonoBehaviour
 
 
     [HideInInspector] public int currentGear = 0;
-    [FormerlySerializedAs("NeutralGear")] [HideInInspector] public bool neutralGear = true;
+
+    [FormerlySerializedAs("NeutralGear")] [HideInInspector]
+    public bool neutralGear = true;
 
     [HideInInspector] public float motorRPM = 0.0f;
 
@@ -261,7 +268,6 @@ public class VehicleControl : MonoBehaviour
 
     void Awake()
     {
-
         if (carSetting.automaticGear) neutralGear = false;
 
         myRigidbody = transform.GetComponent<Rigidbody>();
@@ -490,7 +496,7 @@ public class VehicleControl : MonoBehaviour
                     accel = accelBack;
                 }
 
-                _steer = Mathf.MoveTowards(_steer, steerAmount, 0.07f);
+                _steer = Mathf.MoveTowards(_steer, steerAmount, 0.2f);
             }
         }
         else
@@ -664,8 +670,8 @@ public class VehicleControl : MonoBehaviour
                 slip = speed > 0.0f
                     ? (speed > 100
                         ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(_steer), 1f)
-                        : slip = Mathf.Lerp(slip, 1.5f, 0.02f))
-                    : slip = Mathf.Lerp(slip, 0.01f, 0.02f);
+                        : slip = Mathf.Lerp(slip, 1.5f, 1f))
+                    : slip = Mathf.Lerp(slip, 0.01f, 1f);
 
 
                 w_rotate = w.rotation;
@@ -684,7 +690,7 @@ public class VehicleControl : MonoBehaviour
             fc.stiffness = carSetting.stiffness / (slip + slip2);
 
 
-            fc.extremumSlip = 0.2f + Mathf.Abs(_steer);
+            fc.extremumSlip = 0.5f + Mathf.Abs(_steer);
 
             col.sidewaysFriction = fc;
 

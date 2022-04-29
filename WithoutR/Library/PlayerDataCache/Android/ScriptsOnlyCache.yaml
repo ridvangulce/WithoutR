@@ -43,14 +43,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -100,49 +92,49 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1682}
-    - Class: 114
-      Script: {instanceID: 1684}
-    - Class: 114
       Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 1760}
+      Script: {instanceID: 1688}
     - Class: 114
-      Script: {instanceID: 2094}
+      Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 2494}
+      Script: {instanceID: 1764}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 2098}
     - Class: 114
-      Script: {instanceID: 2876}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 2918}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 3008}
+      Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 3092}
+      Script: {instanceID: 2922}
     - Class: 114
-      Script: {instanceID: 3146}
+      Script: {instanceID: 3012}
     - Class: 114
-      Script: {instanceID: 3186}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3614}
+      Script: {instanceID: 3150}
     - Class: 114
-      Script: {instanceID: 3856}
+      Script: {instanceID: 3190}
     - Class: 114
-      Script: {instanceID: 4164}
+      Script: {instanceID: 3618}
     - Class: 114
-      Script: {instanceID: 4470}
+      Script: {instanceID: 3860}
     - Class: 114
-      Script: {instanceID: 5012}
+      Script: {instanceID: 4170}
     - Class: 114
-      Script: {instanceID: 5108}
+      Script: {instanceID: 4476}
     - Class: 114
-      Script: {instanceID: 5168}
+      Script: {instanceID: 5018}
     - Class: 114
-      Script: {instanceID: 5554}
+      Script: {instanceID: 5114}
     - Class: 114
-      Script: {instanceID: 6032}
+      Script: {instanceID: 5174}
+    - Class: 114
+      Script: {instanceID: 5560}
+    - Class: 114
+      Script: {instanceID: 6040}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -203,63 +195,63 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1682}
-    - Class: 114
-      Script: {instanceID: 1684}
-    - Class: 114
       Script: {instanceID: 1686}
     - Class: 114
-      Script: {instanceID: 2028}
+      Script: {instanceID: 1688}
     - Class: 114
-      Script: {instanceID: 2094}
+      Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 2176}
+      Script: {instanceID: 2032}
     - Class: 114
-      Script: {instanceID: 2226}
+      Script: {instanceID: 2098}
     - Class: 114
-      Script: {instanceID: 2420}
+      Script: {instanceID: 2180}
     - Class: 114
-      Script: {instanceID: 2508}
+      Script: {instanceID: 2230}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2424}
     - Class: 114
-      Script: {instanceID: 2670}
+      Script: {instanceID: 2512}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 2782}
+      Script: {instanceID: 2674}
     - Class: 114
-      Script: {instanceID: 2876}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 2918}
+      Script: {instanceID: 2786}
     - Class: 114
-      Script: {instanceID: 2958}
+      Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 3006}
+      Script: {instanceID: 2922}
     - Class: 114
-      Script: {instanceID: 3092}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 3146}
+      Script: {instanceID: 3010}
     - Class: 114
-      Script: {instanceID: 3450}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3614}
+      Script: {instanceID: 3150}
     - Class: 114
-      Script: {instanceID: 3856}
+      Script: {instanceID: 3454}
     - Class: 114
-      Script: {instanceID: 3980}
+      Script: {instanceID: 3618}
     - Class: 114
-      Script: {instanceID: 4514}
+      Script: {instanceID: 3860}
     - Class: 114
-      Script: {instanceID: 4936}
+      Script: {instanceID: 3984}
     - Class: 114
-      Script: {instanceID: 5670}
+      Script: {instanceID: 4520}
     - Class: 114
-      Script: {instanceID: 5866}
+      Script: {instanceID: 4942}
     - Class: 114
-      Script: {instanceID: 6078}
+      Script: {instanceID: 5676}
     - Class: 114
-      Script: {instanceID: 6090}
+      Script: {instanceID: 5874}
+    - Class: 114
+      Script: {instanceID: 6086}
+    - Class: 114
+      Script: {instanceID: 6098}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 119
@@ -953,6 +945,12 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
+      Hash: 20240431c815058690a3ba9bdfb91802
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LookCamera
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -1379,6 +1377,12 @@ ScriptsOnlyBuild:
     className: CinemachineBasicMultiChannelPerlin
   - hash:
       serializedVersion: 2
+      Hash: f9a3fa795fdc45b44f33cc2a28c5a2ca
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SkyboxChanger
+  - hash:
+      serializedVersion: 2
       Hash: 3aee34055db3a555dcc877bf3dc309de
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1467,20 +1471,8 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextEventCheck
-  - hash:
-      serializedVersion: 2
-      Hash: f9a3fa795fdc45b44f33cc2a28c5a2ca
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SkyboxChanger
-  - hash:
-      serializedVersion: 2
-      Hash: 20240431c815058690a3ba9bdfb91802
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: LookCamera
   platform: 13
   scenePathNames:
   - Assets/Scenes/Level 0.unity
   - Assets/Scenes/Level 1.unity
-  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 0.9.apk
+  playerPath: /Users/Ridvan/Desktop/APK/Catcher Cop 1.2.apk

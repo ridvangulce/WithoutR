@@ -10618,9 +10618,9 @@ MonoBehaviour:
       backRight: {fileID: 735208852164370053}
       backLeft: {fileID: 735208852164442131}
     setting:
-      Radius: 0.49
-      Weight: 1000
-      Distance: 0.2
+      radius: 0.49
+      weight: 1000
+      distance: 0.2
   carLights:
     brakeLights:
     - {fileID: 735208852153801799}
@@ -10629,9 +10629,9 @@ MonoBehaviour:
     - {fileID: 735208852153697325}
     - {fileID: 735208852153701507}
   carSounds:
-    IdleEngine: {fileID: 735208852156362709}
-    LowEngine: {fileID: 735208852156536375}
-    HighEngine: {fileID: 735208852156358635}
+    idleEngine: {fileID: 735208852156362709}
+    lowEngine: {fileID: 735208852156536375}
+    highEngine: {fileID: 735208852156358635}
     nitro: {fileID: 735208852156540065}
     switchGear: {fileID: 735208852156374099}
   carParticles:
@@ -10663,9 +10663,9 @@ MonoBehaviour:
     brakePower: 12000
     shiftCentre: {x: 0, y: -0.05, z: 0}
     maxSteerAngle: 30
-    shiftDownRPM: 2000
-    shiftUpRPM: 4000
-    idleRPM: 700
+    shiftDownRpm: 2000
+    shiftUpRpm: 4000
+    idleRpm: 700
     stiffness: 3
     automaticGear: 1
     gears:
@@ -10675,15 +10675,41 @@ MonoBehaviour:
     - 3
     - 2
     - 1
-    LimitBackwardSpeed: 60
-    LimitForwardSpeed: 220
+    limitBackwardSpeed: 60
+    limitForwardSpeed: 220
+  accel: 0
   brake: 0
   curTorque: 100
   powerShift: 100
   shift: 0
   speed: 0
+  efficiencyTable:
+  - 0.6
+  - 0.65
+  - 0.7
+  - 0.75
+  - 0.8
+  - 0.85
+  - 0.9
+  - 1
+  - 1
+  - 0.95
+  - 0.8
+  - 0.7
+  - 0.6
+  - 0.5
+  - 0.45
+  - 0.4
+  - 0.36
+  - 0.33
+  - 0.3
+  - 0.2
+  - 0.1
+  - 0.05
+  pitchDelay: 0
+  shiftTime: 0
   currentGear: 0
-  NeutralGear: 1
+  neutralGear: 1
   motorRPM: 0
   Backward: 0
   accelFwd: 0
@@ -10751,11 +10777,11 @@ MonoBehaviour:
     type: 3}
   isDestroy: 0
   changePrefab: 0
-  timer: {fileID: 0}
-  explosionEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
-    type: 3}
+  timer: {fileID: 3916253918374953880, guid: 63f751ff49e1c4f0f9dd7a749fbaf9eb, type: 3}
   waypointArrow: {fileID: 187226, guid: 1b0d6b96d8195b34997787cdb062b088, type: 3}
   audioSource: {fileID: 735208852919646035}
+  animator: {fileID: 9044654124316366031, guid: c44b34deec1eb4728a5bfc5f0716299e,
+    type: 3}
 --- !u!1 &735208852164645877
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public float _time = 120f;
+    public float _time = 90f;
     public TextMeshProUGUI text;
     public GameObject retryCanvas;
     public GameObject controlCanvas;
