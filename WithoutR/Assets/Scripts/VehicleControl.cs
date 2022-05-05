@@ -150,7 +150,7 @@ public class VehicleControl : MonoBehaviour
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private float _steer = 0;
+    private float steer = 0;
     [SerializeField] private float accel = 0.0f;
     [HideInInspector] public bool brake;
 
@@ -245,6 +245,7 @@ public class VehicleControl : MonoBehaviour
         GameObject wheelCol = new GameObject(wheel.name + "WheelCollider");
 
         wheelCol.transform.parent = transform;
+        wheelCol.transform.localScale = wheel.localScale;
         wheelCol.transform.position = wheel.position;
         wheelCol.transform.eulerAngles = transform.eulerAngles;
         var localPosition = wheelCol.transform.localPosition;
@@ -479,7 +480,7 @@ public class VehicleControl : MonoBehaviour
 
                 if (carWheels.wheels.frontWheelDrive || carWheels.wheels.backWheelDrive)
                 {
-                    _steer = Mathf.MoveTowards(_steer, Input.GetAxis("Horizontal"), 0.2f);
+                    steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
                     accel = Input.GetAxis("Vertical");
                     brake = Input.GetButton("Jump");
                     shift = Input.GetKey(KeyCode.LeftShift) | Input.GetKey(KeyCode.RightShift);
@@ -496,13 +497,13 @@ public class VehicleControl : MonoBehaviour
                     accel = accelBack;
                 }
 
-                _steer = Mathf.MoveTowards(_steer, steerAmount, 0.2f);
+                steer = Mathf.MoveTowards(steer, steerAmount, 0.07f);
             }
         }
         else
         {
             accel = 0.0f;
-            _steer = 0.0f;
+            steer = 0.0f;
             brake = false;
             shift = false;
         }
@@ -514,7 +515,7 @@ public class VehicleControl : MonoBehaviour
 
         if (carSetting.carSteer)
             carSetting.carSteer.localEulerAngles =
-                new Vector3(steerCurAngle.x, steerCurAngle.y, steerCurAngle.z + (_steer * -120.0f));
+                new Vector3(steerCurAngle.x, steerCurAngle.y, steerCurAngle.z + (steer * -120.0f));
 
 
         if (carSetting.automaticGear && (currentGear == 1) && (accel < 0.0f))
@@ -669,9 +670,9 @@ public class VehicleControl : MonoBehaviour
 
                 slip = speed > 0.0f
                     ? (speed > 100
-                        ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(_steer), 1f)
-                        : slip = Mathf.Lerp(slip, 1.5f, 1f))
-                    : slip = Mathf.Lerp(slip, 0.01f, 1f);
+                        ? slip = Mathf.Lerp(slip, 1.0f + Mathf.Abs(steer), 0.02f)
+                        : slip = Mathf.Lerp(slip, 1.5f, 0.02f))
+                    : slip = Mathf.Lerp(slip, 0.01f, 0.02f);
 
 
                 w_rotate = w.rotation;
@@ -690,12 +691,12 @@ public class VehicleControl : MonoBehaviour
             fc.stiffness = carSetting.stiffness / (slip + slip2);
 
 
-            fc.extremumSlip = 0.5f + Mathf.Abs(_steer);
+            fc.extremumSlip = 0.2f + Mathf.Abs(steer);
 
             col.sidewaysFriction = fc;
 
 
-            if (shift && (currentGear > 1 && speed > 50.0f) && _shiftmotor && Mathf.Abs(_steer) < 0.2f)
+            if (shift && (currentGear > 1 && speed > 50.0f) && _shiftmotor && Mathf.Abs(steer) < 0.2f)
             {
                 if (powerShift == 0)
                 {
@@ -740,7 +741,7 @@ public class VehicleControl : MonoBehaviour
 
 
             w.rotation = Mathf.Repeat(w.rotation + Time.deltaTime * col.rpm * 360.0f / 60.0f, 360.0f);
-            w.rotation2 = Mathf.Lerp(w.rotation2, col.steerAngle, 10f);
+            w.rotation2 = Mathf.Lerp(w.rotation2, col.steerAngle, 0.1f);
             w.wheel.localRotation = Quaternion.Euler(w.rotation, w.rotation2, 0.0f);
 
 
@@ -902,12 +903,12 @@ public class VehicleControl : MonoBehaviour
 
             if (brake || slip2 > 2.0f)
             {
-                col.steerAngle = Mathf.Lerp(col.steerAngle, _steer * w.maxSteer, 10f);
+                col.steerAngle = Mathf.Lerp(col.steerAngle, steer * w.maxSteer, 0.02f);
             }
             else
             {
                 float SteerAngle = Mathf.Clamp(speed / carSetting.maxSteerAngle, 1.0f, carSetting.maxSteerAngle);
-                col.steerAngle = _steer * (w.maxSteer / SteerAngle);
+                col.steerAngle = steer * (w.maxSteer / SteerAngle);
             }
         }
 

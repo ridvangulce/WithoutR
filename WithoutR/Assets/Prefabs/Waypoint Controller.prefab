@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &13108806177404763
 Transform:
   m_ObjectHideFlags: 0
@@ -170,5 +170,6 @@ MonoBehaviour:
     waypointEvent:
       m_PersistentCalls:
         m_Calls: []
+  currentWaypoint: {fileID: 0}
+  arrowTarget: {fileID: 0}
   enemy: {fileID: 4851821917553158863, guid: 7533aaa8f61b543e3b3ba228198d1b80, type: 3}
-  distanceText: {fileID: 0}

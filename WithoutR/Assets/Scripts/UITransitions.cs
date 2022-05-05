@@ -25,7 +25,7 @@ public class UITransitions : MonoBehaviour
         menuCanvas.SetActive(false);
         loadingCanvas.SetActive(true);
         StartCoroutine(StartLoad(_level));
-        ScoreManager.scorValue = 0;
+        
     }
 
     IEnumerator StartLoad(int level)

@@ -1980,8 +1980,9 @@ MonoBehaviour:
     type: 3}
   isDestroy: 0
   changePrefab: 0
-  timer: {fileID: 0}
-  waypointArrow: {fileID: 0}
+  timer: {fileID: 3916253918374953880, guid: 63f751ff49e1c4f0f9dd7a749fbaf9eb, type: 3}
+  waypointArrow: {fileID: 13108806177404765, guid: ff1cce6674e514b9295cbe1e13728650,
+    type: 3}
   audioSource: {fileID: 0}
   animator: {fileID: 0}
 --- !u!1 &9025089908359502794
